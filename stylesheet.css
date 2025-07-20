@@ -199,10 +199,10 @@ p{
 .services-cards{
     display: inline-block;
     background-color:  #ffffff;
-    margin-left: 250px;
+    margin-left: 100px;
     border-radius: 10px;
     padding: 20px;
-    width: 250px;
+    width: 200px;
     height: 200px;
     gap: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
