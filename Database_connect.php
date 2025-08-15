@@ -1,6 +1,7 @@
 <?php
-$connection = mysql_connect("localhost","root"," ",database);
+$connection = mysqli_connect("localhost","root","","SAHYOG");
 if(!$connection){
-    die("connection failed: ",.mysql_connect_error());
+    die("connection failed: ".mysqli_connect_error());
 }
+echo"connected succesfully";
 ?>
