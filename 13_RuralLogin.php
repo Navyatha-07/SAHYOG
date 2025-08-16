@@ -1,7 +1,7 @@
  <?php
 $servername = "localhost";
-$username = "root"; // change if needed
-$password = "Navya@123"; // change if you set a MySQL password
+$username = "root"; 
+$password = "Navya@123";
 $dbname = "SAHYOG1";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,10 +10,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $FullName = $_POST['FullName'] ?? '';
-    $pass = $_POST['Password'] ?? '';
+    $FullName = trim($_POST['FullName'] ?? '');
+    $pass = trim($_POST['Password'] ?? '');
     // Prepare MySQL
-    $stmt= $conn->prepare("Select password From rural_users where FULLNAME = ?");
+    $stmt= $conn->prepare("Select password FROM rural_users where FullName = ?");
     $stmt -> bind_param("s",$FullName);
     $stmt ->execute();
     $stmt -> store_result();
@@ -21,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt -> bind_result($hashedPassword);
         $stmt->fetch();
     if(password_verify($pass,$hashedPassword)){
-        echo "Successfully logged in!";
+        echo "Successfully logged in! <br><br>";
+        echo '<a href="Rural_dashboard.html"><button type="button">Go to Dashbaord</button></a>';
     }
     else {
         echo "Incorrect Credentials";
@@ -31,6 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "user not found";
     }
     $stmt->close();
-}
 $conn->close();
+}
 ?>
