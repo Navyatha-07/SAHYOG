@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural_SIgnup</title>
+    <link rel="stylesheet" href="stylesheet.css"/>
+</head>
+<body>
+    <h1 id="id1"> Kindly Give the Required Details :</h1>
+    <form action="9_RuralSignup.php" method="POST">
+        <input type="text" name="FullName"placeholder="FULL NAME">
+        <input type="text" name="Email" placeholder="EMAIL ID">
+        <input type="text"  name="MobileNumber" placeholder="MOBILE NO." pattern="\d{10}">
+        <input type="password"  name="Password" placeholder="password must be greater than 8 characters">
+        <input type="text"name="Age" placeholder="Enter your Age">
+        <input type="text" name="location" placeholder=" Enter your Location">
+        <input type="text" name="Skills" placeholder=" Enter your Skills" required>
+        <input type="text"name="Needs" placeholder=" Enter your Needs">
+        <button> SUBMIT </button>
+    </form>
+</body>
+</html>

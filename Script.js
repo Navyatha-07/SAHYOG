@@ -12,3 +12,15 @@ window.onclick = function(event){
         }
     }
 }
+let skillCount = 1;
+document.getElementById('AddSkill').addEventListener('click',function(){
+    skillCount++;
+    const container=
+    document.getElementById('SkillsContainer');
+    const input = document.createElement('input');
+    input.type ='text';
+    input.name = 'skills[]';
+    input.placeholder = 'Skill' + skillCount;
+    container.appendChild(document.createElement('br'));
+    container.appendChild(append);
+});
