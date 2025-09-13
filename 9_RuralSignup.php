@@ -20,6 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $Skills =$_POST['Skills'] ?? '';
     // Hash the password
     $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+    $check = $conn -> prepare("SELECT id from rural_users WHERE MobileNumber =? OR Email=?");
+    $check-> bind_param("ss",$MobileNumber,$Email);
+    $check-> execute();
+    $check->store_result();
+    if($check -> num_rows>0){
+        echo "Mobile number or email already exists.Please try again.";
+    }
+    else{
     // Insert into DB
     $sql = "INSERT INTO rural_users(FullName, Email, Password,MobileNumber,Age,location,Skills,Needs) VALUES (?, ?, ?,?,?,?,?,?)";
     $stmt = $conn->prepare($sql);
@@ -34,6 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $stmt->error;
     }
     $stmt->close();
+}
+$check -> close();
 }
 $conn->close();
 ?>

@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root"; // change if needed
-$password = "Navya@123"; // change if you set a MySQL password
-$dbname = "SAHYOG1";
+$username = "root"; 
+$password = "Navya@123";
+$dbname = "sahyog1";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check
@@ -10,14 +10,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullname = $_POST['fullname'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $pass = $_POST['password'] ?? '';
-    $mobile_number=$_POST['mobile_number'] ?? '';
-     $nameofNGO=$_POST['nameofNGO'] ?? '';
-      $location=$_POST['location'] ?? '';
+    $fullname = $_POST['fullname'] ;
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+    $mobile_number=$_POST['mobile_number'];
+     $nameofNGO=$_POST['nameofNGO'];
+      $location=$_POST['location'];
     // Hash the password
     $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+    $check = $conn -> prepare("SELECT id from ngo_users WHERE mobile_number =? OR email=?");
+    $check-> bind_param("ss",$mobile_number,$email);
+    $check-> execute();
+    $check->store_result();
+    if($check -> num_rows>0){
+        echo "Mobile number or email already exists.Please try again.";
+    }
+    else{
     // Insert into DB
     $sql = "INSERT INTO ngo_users (fullname, email, password,mobile_number,nameofNGO,location) VALUES (?, ?, ?,?,?,?)";
     $stmt = $conn->prepare($sql);
@@ -32,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $stmt->error;
     }
     $stmt->close();
+}
+$check->close();
 }
 $conn->close();
 ?>

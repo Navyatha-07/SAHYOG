@@ -1,4 +1,4 @@
-use SAHYOG1;
+use sahyog1;
 create table  if not exists ngo_users (
     id int AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(250) NOT NULL ,
@@ -9,6 +9,7 @@ create table  if not exists ngo_users (
     location varchar(250) NOT NULL 
 );
 Alter table ngo_users MODIFY password VARCHAR(255) NOT NULL;
+SHOW INDEX FROM ngo_users;
 create table if not exists rural_users(
     ID int AUTO_INCREMENT PRIMARY kEY,
     FullName Varchar(250) NOT NULL,
@@ -21,3 +22,10 @@ create table if not exists rural_users(
     Needs varchar(255) not null
 );
 Alter table rural_users MODIFY password VARCHAR(255) NOT NULL;
+SHOW TABLES;
+DESCRIBE ngo_users;
+ALTER TABLE ngo_users DROP INDEX nameofNGO;
+ALTER TABLE ngo_users DROP INDEX location;
+DESCRIBE ngo_users;
+SHOW INDEX FROM ngo_users;
+

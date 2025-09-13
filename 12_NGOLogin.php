@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->fetch();
     if(password_verify($pass,$hashedPassword)){
         echo "Successfully logged in!";
-        echo '<a href="Rural_dashboard.html"><button type="button">Go to Dashbaord</button></a>';
+        echo '<a href="NGO_dashboard.html"><button type="button">Go to Dashbaord</button></a>';
     }
     else {
         echo "Incorrect Credentials";
