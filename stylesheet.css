@@ -199,28 +199,39 @@ button:hover {
     color: #333;
 }
 
-/* ===== Signup Button ===== */
-.signupHeading {
-    font-size: 3rem;
-    padding: 40px;
-    margin: 40px;
+/* Signup options side by side */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    gap: 70px; /* Increased space between buttons */
+    margin-top: 50px;
 }
+
+/* Square buttons */
 .signup {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 150px;
-    padding: 20px 60px;
-    font-size: 2rem;
+    width: 180px;
+    height: 180px;
+    font-size: 1.5rem;
     background-color: #4B0082;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* vertically center text */
+    text-align: center;
+    text-decoration: none; /* for <a> links */
+    transition: background-color 0.3s ease;
 }
+
 .signup:hover {
     background-color: #3a0069;
 }
-/* ===== Popup Modal ===== */
+
+
+
+/* Popup Modal */
 .popup {
     display: none; /* hidden by default */
     position: fixed;
@@ -232,11 +243,12 @@ button:hover {
     z-index: 1000;
 }
 
-
+/* Show popup when targeted */
 .popup:target {
     display: flex;
 }
 
+/* Popup content box */
 .popup-content {
     background: #ffffff;
     padding: 30px;
@@ -248,32 +260,7 @@ button:hover {
     position: relative;
 }
 
-.popup-content h2 {
-    color: #4B0082; 
-    margin-bottom: 15px;
-}
-
-.popup-content p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    color: #2d2d44;
-}
-
-.popup-content a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4B0082;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.popup-content a:hover {
-    background-color: #3a0069;
-}
-
-/* Close button (X) */
+/* Close button */
 .close-popup {
     position: absolute;
     top: 10px;
@@ -281,4 +268,41 @@ button:hover {
     font-size: 1.8rem;
     color: #4B0082;
     text-decoration: none;
+}
+
+/* Popup buttons container */
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Individual popup buttons */
+.popup-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #4B0082;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.popup-btn:hover {
+    background-color: #3a0069;
+}
+
+/* Optional: Know More link style */
+.know-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4B0082;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.know-more:hover {
+    text-decoration: underline;
 }
