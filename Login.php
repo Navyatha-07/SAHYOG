@@ -21,6 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt -> bind_result($fullname,$hashedPassword);
         $stmt -> fetch();
         if(password_verify($password,$hashedPassword)){
+            $_SESSION['NGO_ID'] = $NGO_ID;
             $_SESSION['username'] =$username;
             $_SESSION['usertype'] ='ngo';
             $stmt -> close();
@@ -31,6 +32,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         else{
             $error ="Invalid USername or Password";
         }
+    }
+    else{
+        $error="NGO not Found";
     }
     $stmt -> close();
     $stmt =$conn -> prepare("SELECT FullName,Password FROM rural_users WHERE FullName=?");

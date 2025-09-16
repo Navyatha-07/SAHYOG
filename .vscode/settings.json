@@ -5,19 +5,6 @@
                 "authProtocol": "default",
                 "enableSsl": "Disabled"
             },
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
-            "name": "SAHYOG1",
-            "database": "SAHYOG",
-            "username": "root"
-        },
-        {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
             "ssh": "Disabled",
             "previewLimit": 50,
             "server": "157.35.68.228",
@@ -26,6 +13,21 @@
             "name": "sahyog2",
             "username": "HARIKA",
             "database": "Sahyog1"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "SAHYOG1",
+            "database": "SAHYOG",
+            "username": "root",
+            "askForPassword": true
         }
     ]
 }

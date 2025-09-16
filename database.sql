@@ -24,8 +24,20 @@ create table if not exists rural_users(
 Alter table rural_users MODIFY password VARCHAR(255) NOT NULL;
 SHOW TABLES;
 DESCRIBE ngo_users;
-ALTER TABLE ngo_users DROP INDEX nameofNGO;
-ALTER TABLE ngo_users DROP INDEX location;
-DESCRIBE ngo_users;
-SHOW INDEX FROM ngo_users;
 
+
+SHOW INDEX FROM ngo_users;
+Create TABLE  if not exists Scheme(
+    Scheme_ID INT AUTO_INCREMENT PRIMARY KEY,
+    NGO_ID INT,
+    Scheme_Title VARCHAR(255) NOT NULL,
+    Scheme_Description TEXT NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    Scheme_Date DATE NOT NULL,
+    ELigibility TEXT NOT NULL,
+    Category VARCHAR(100) NOT NULL,
+    Status ENUM('active','inactive') DEFAULT 'active',
+    Posted_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Foreign Key (NGO_ID) REFERENCES ngo_users(id)
+);
+ALTER TABLE Scheme CHANGE ELigibility Eligibility TEXT NOT NULL;

@@ -10,16 +10,17 @@
   <h1>Post a Scheme</h1>
   <form action="17_Post_Scheme.php" method="POST">
     <h2>Scheme details</h2>
+    <input type="hidden" name="NGO_ID" value="1">
     <label for="title">Scheme title:</label>
-    <input type="text" name="Scheme" placeholder="Enter scheme title" required>
+    <input type="text" name="Scheme_Title" placeholder="Enter scheme title" required>
     <label for="description">Description:</label>
-    <textarea name="Description" placeholder="Brief description of the scheme"></textarea>
+    <textarea name="Scheme_Description" placeholder="Brief description of the scheme"></textarea>
     <label for="location">Location:</label>
-    <input type="text"  name="Location" placeholder="e.g State,city,Online">
+    <input type="text"  name="location" placeholder="e.g State,city,Online">
     <label>Date</label>
-    <input type="date" name="Date">
+    <input type="date" name="Scheme_Date">
     <label for="eligibility criteria">Eligibility:</label>
-    <input type="text"  name="Eligibilty" placeholder="e.g. Students,Women,Farmers">
+    <input type="text"  name="Eligibility" placeholder="e.g. Students,Women,Farmers">
     <label>Category:</label>
     <input type="text" name="Category" placeholder="e.g. Education,Employment">
     <button type="submit">Submit</button>
