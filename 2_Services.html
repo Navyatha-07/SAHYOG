@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
-    <link rel="stylesheet" href="stylesheet.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services</title>
+  <link rel="stylesheet" href="stylesheet.css"/>
 </head>
 <body>
-    <h1 class="servicesHeading">Our Services</h1>
-    <p class="services"> We aim to empower rural communities by providing access to government schemes,
-        job opportunities,skill trainings,and personalized support</p>
-        <div class="services-container">
-            <div class="services-cards">
-                <h3>Skill Training</h3>
-                <p> Learn new Skills to Improve employment opportunities</p>
-            </div>
-            <div class="services-cards">
-                <h3>Government Schemes</h3>
-                <p> Get information about the latest government welfare schemes</p>
-            </div>
-            <div class="services-cards">
-                <h3>Job opportunities</h3>
-                <p> Explore verified jobs suitable for your skills and interests.</p>
-            </div>
-        </div>
+  <h1 class="servicesHeading">Our Services</h1>
+  <p class="services">We aim to empower rural communities by providing access to government schemes,
+      job opportunities, skill trainings, and personalized support.</p>
+
+  <div class="services-container">
+    <div class="services-cards">
+      <h3>Skill Training</h3>
+      <p>Learn new skills to improve employment opportunities</p>
+      <a href="#popup">Know More</a>
+    </div>
+    <div class="services-cards">
+      <h3>Government Schemes</h3>
+      <p>Get information about the latest government welfare schemes</p>
+      <a href="#popup">Know More</a>
+    </div>
+    <div class="services-cards">
+      <h3>Job Opportunities</h3>
+      <p>Explore verified jobs suitable for your skills and interests.</p>
+      <a href="#popup">Know More</a>
+    </div>
+  </div>
+
+  <!-- Popup Modal -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <a href="#" class="close-popup">&times;</a>
+      <h2>Login Required</h2>
+      <p>You need to login to access more information.</p>
+      <a href="Login.html">Go to Login</a>
+    </div>
+  </div>
 </body>
 </html>
