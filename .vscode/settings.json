@@ -12,6 +12,20 @@
             "name": "SAHYOG1",
             "database": "SAHYOG",
             "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "157.35.68.228",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "sahyog2",
+            "username": "HARIKA",
+            "database": "Sahyog1"
         }
     ]
 }

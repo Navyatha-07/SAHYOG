@@ -2,10 +2,10 @@
 $servername = "localhost";
 $username = "root"; // change if needed
 $password = "Navya@123"; // change if you set a MySQL password
-$dbname = "SAHYOG1";
+$dbname = "sahyog1";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check
+// Check 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
