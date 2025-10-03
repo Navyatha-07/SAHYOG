@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root"; // change if needed
-$password = "Navya@123"; // change if you set a MySQL password
+$password = ""; // change if you set a MySQL password
 $dbname = "sahyog1";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -9,7 +9,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

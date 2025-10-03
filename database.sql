@@ -8,6 +8,8 @@ create table  if not exists ngo_users (
     nameofNGO varchar(250) NOT NULL ,
     location varchar(250) NOT NULL 
 );
+Alter TABLE ngo_users 
+drop index location;
 Alter table ngo_users MODIFY password VARCHAR(255) NOT NULL;
 SHOW INDEX FROM ngo_users;
 create table if not exists rural_users(

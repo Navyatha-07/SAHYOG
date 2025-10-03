@@ -6,19 +6,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Training details</h1>
 
-  <form>
-    <input type="text" placeholder="Enter training title" required>
-    <textarea placeholder="Brief description of the training"></textarea>
-    <input type="date">
-    <input type="text" placeholder="e.g. 2 weeks, 5 days">
-    <input type="text" placeholder="e.g City">
-    <input type="text" placeholder="e.g. Online,Offile">
-    <input type="text" placeholder="e.g. Bsc or Btech Students,All graduates">
-    <input type="text" placeholder="e.g. Technical skills,Soft skills">
-    <input type="text" placeholder="email or phone number ">
-    
+  <h1>Post Training</h1>
+  <form action="Post_Training.php" method="POST">
+    <!-- Optional: hidden NGO_ID if you want to send it -->
+    <input type="hidden" name="NGO_ID" value="<?php echo $_SESSION['NGO_ID']; ?>">
+
+    <input type="text" name="Training_Title" placeholder="Enter training title" required>
+    <textarea name="Training_Description" placeholder="Brief description of the training" required></textarea>
+    <input type="date" name="Training_Date" required>
+    <input type="text" name="Duration" placeholder="e.g. 2 weeks, 5 days">
+    <input type="text" name="location" placeholder="e.g. City">
+    <input type="text" name="Mode" placeholder="e.g. Online, Offline">
+    <input type="text" name="Eligibility" placeholder="e.g. BSc/BTech students, All graduates">
+    <input type="text" name="Skills" placeholder="e.g. Technical skills, Soft skills">
+    <input type="text" name="Contact" placeholder="Email or phone number">
+
     <button type="submit">Submit</button>
   </form>
 
