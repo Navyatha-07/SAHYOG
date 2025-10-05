@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if NGO is logged in
+// Checking if NGO is logged in
 if(!isset($_SESSION['NGO_ID'])){
     echo "<p style='color:red;'>You are not logged in!</p>";
     exit;
