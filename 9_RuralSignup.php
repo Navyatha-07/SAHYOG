@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssssss", $FullName, $Email, $hashedPassword,$MobileNumber,$Age,$location,$Skills,$Needs);
     if ($stmt ->execute()) {
         echo "Signup successful! <br> <br>";
-        echo '<a href="11_RuralLogin.html"><button type="button">Go to Login</button></a>';
+        echo '<a href="Login.html"><button type="button">Go to Login</button></a>';
     } else {
         echo "Error: " . $stmt->error;
     }
