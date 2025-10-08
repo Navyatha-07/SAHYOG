@@ -3,58 +3,76 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// ✅ Connect to database
-$conn = new mysqli("localhost", "root", "", "sahyog1");
-if ($conn->connect_error) {
+// Check if rural user is logged in
+if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'rural'){
+    echo "<p style='color:red;'>You are not logged in!</p>";
+    exit;
+}
+
+$rural_username = $_SESSION['username'];
+
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sahyog1";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
 }
 
-// ✅ Fetch all schemes (from all NGOs)
-$query = "SELECT j.*, n.fullname
-          FROM jobs j  
-          JOIN ngo_users n ON j.NGO_ID = n.id
-          ORDER BY j.Posted_Date DESC";
-
-$result = $conn->query($query);
+// Fetch jobs
+$sql = "SELECT Job_ID, Job_Title, Job_Description, location, Job_Date, Eligibility, Salary, Job_Type, Vacancies, Contact FROM jobs WHERE status='active' ORDER BY Posted_Date DESC";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Available Schemes for Rural Users</title>
-<style>
-.scheme {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #f9f9f9;
-}
-.scheme h3 {
-    margin: 0;
-    color: #333;
-}
-.details {
-    color: #555;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Available Jobs</title>
 </head>
 <body>
-<h2>Available Schemes</h2>
+<h1>Available Jobs</h1>
 
 <?php
 if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
-            echo "<b>{$row['Job_Title']}</b> ({$row['Posted_Date']})<br>";
-            echo "{$row['Job_Description']}<br>";
-            echo "Location: {$row['location']} | Type: {$row['Job_Type']} | Salary: {$row['Salary']}<br>";
-            echo "Eligibility: {$row['Eligibility']} | Contact: {$row['Contact']}<br>";
-            echo "Posted by: {$row['fullname']}<hr>";
-        }
-    } 
-else {
-    echo "<p>No schemes available right now.</p>";
+    echo "<table border='1' cellpadding='10'>
+            <tr>
+                <th>Job Title</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Eligibility</th>
+                <th>Salary</th>
+                <th>Job Type</th>
+                <th>Vacancies</th>
+                <th>Contact</th>
+                <th>Action</th>
+            </tr>";
+    while($row = $result->fetch_assoc()){
+        echo "<tr>
+                <td>{$row['Job_Title']}</td>
+                <td>{$row['Job_Description']}</td>
+                <td>{$row['location']}</td>
+                <td>{$row['Job_Date']}</td>
+                <td>{$row['Eligibility']}</td>
+                <td>{$row['Salary']}</td>
+                <td>{$row['Job_Type']}</td>
+                <td>{$row['Vacancies']}</td>
+                <td>{$row['Contact']}</td>
+                <td>
+                    <form action='apply.php' method='POST'>
+                        <input type='hidden' name='Job_ID' value='{$row['Job_ID']}'>
+                        <button type='submit'>Apply</button>
+                    </form>
+                </td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "<p>No jobs available currently.</p>";
 }
 $conn->close();
 ?>

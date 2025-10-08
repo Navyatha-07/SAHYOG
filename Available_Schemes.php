@@ -1,68 +1,75 @@
-<<<<<<< HEAD
-=======
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sahyog1";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// ✅ Connect to database
-$conn = new mysqli("localhost", "root", "", "sahyog1");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// ✅ Fetch all schemes (from all NGOs)
-$query = "SELECT s.*, n.fullname
-          FROM scheme s 
-          JOIN ngo_users n ON s.NGO_ID = n.id
-          ORDER BY s.Posted_Date DESC";
+if(!isset($_SESSION['Rural_ID'])) {
+    echo "<p style='color:red;'>You are not logged in!</p>";
+    exit;
+}
 
-$result = $conn->query($query);
+$sql = "SELECT * FROM Scheme WHERE status='active'";
+$result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Available Schemes for Rural Users</title>
-<style>
-.scheme {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #f9f9f9;
-}
-.scheme h3 {
-    margin: 0;
-    color: #333;
-}
-.details {
-    color: #555;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Schemes</title>
+    <style>
+        table { width: 90%; margin: 30px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #888; text-align: center; }
+        th { background: #4B0082; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        button { background-color: #4B0082; color: white; padding: 7px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #6a0dad; }
+        h1 { text-align: center; color: #4B0082; }
+    </style>
 </head>
 <body>
-<h2>Available Schemes</h2>
-
-<?php
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "<div class='scheme'>";
-        echo "<h3>" . htmlspecialchars($row['Scheme_Title']) . "</h3>";
-        echo "<p>" . nl2br(htmlspecialchars($row['Scheme_Description'])) . "</p>";
-        echo "<div class='details'>";
-        echo "📍 Location: " . htmlspecialchars($row['location']) . "<br>";
-        echo "🏷 Category: " . htmlspecialchars($row['Category']) . "<br>";
-        echo "📅 Scheme Date: " . htmlspecialchars($row['Scheme_Date']) . "<br>";
-        echo "🏛 Posted by: " . htmlspecialchars($row['fullname']) . "<br>";
-        echo "</div></div>";
-    }
-} else {
-    echo "<p>No schemes available right now.</p>";
-}
-$conn->close();
-?>
+    <h1>Available Schemes</h1>
+    <table>
+        <tr>
+            <th>Scheme Title</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Eligibility</th>
+            <th>Category</th>
+            <th>Apply</th>
+        </tr>
+        <?php
+        if ($result && $result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$row['Scheme_Title']}</td>
+                        <td>{$row['Scheme_Description']}</td>
+                        <td>{$row['location']}</td>
+                        <td>{$row['Scheme_Date']}</td>
+                        <td>{$row['Eligibility']}</td>
+                        <td>{$row['Category']}</td>
+                        <td>
+                            <form method='POST' action='Apply.php'>
+                                <input type='hidden' name='type' value='scheme'>
+                                <input type='hidden' name='id' value='{$row['Scheme_ID']}'>
+                                <button type='submit' name='apply'>Apply</button>
+                            </form>
+                        </td>
+                    </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='7'>No active schemes available.</td></tr>";
+        }
+        ?>
+    </table>
 </body>
 </html>
->>>>>>> 72247572f367d862f5fabe0c6a00e165d56937c2
+<?php $conn->close(); ?>
