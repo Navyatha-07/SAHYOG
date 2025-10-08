@@ -22,7 +22,7 @@ $result = $conn->query($query);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Available Schemes for Rural Users</title>
+<title>Available Jobs for Rural Users</title>
 <style>
 .scheme {
     border: 1px solid #ddd;
@@ -41,7 +41,7 @@ $result = $conn->query($query);
 </style>
 </head>
 <body>
-<h2>Available Schemes</h2>
+<h2>Available Jobs</h2>
 
 <?php
 if($result->num_rows > 0){

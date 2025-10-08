@@ -27,19 +27,26 @@ $result = $stmt->get_result();
 <meta charset="UTF-8">
 <title>Your Posted Schemes</title>
 <style>
-.scheme {
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
     border: 1px solid #ddd;
-    border-radius: 8px;
     padding: 10px;
-    margin: 10px 0;
+    text-align: left;
 }
-.icons {
-    margin-top: 5px;
+th {
+    background-color: #f2f2f2;
 }
-.icons a {
-    margin-right: 10px;
+a {
     text-decoration: none;
     color: blue;
+    margin-right: 5px;
+}
+a:hover {
+    text-decoration: underline;
 }
 </style>
 </head>
@@ -52,18 +59,31 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
 }
 
 if ($result->num_rows > 0) {
+    echo "<table>";
+    echo "<tr>
+            <th>Scheme Title</th>
+            <th>Scheme Date</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Category</th>
+            <th>Eligibility</th>
+            <th>Actions</th>
+          </tr>";
     while ($row = $result->fetch_assoc()) {
-        echo "<div class='scheme'>";
-        echo "<b>{$row['Scheme_Title']}</b> ({$row['Scheme_Date']})<br>";
-        echo nl2br(htmlspecialchars($row['Scheme_Description'])) . "<br>";
-        echo "📍 Location: {$row['location']} | 🏷 Category: {$row['Category']}<br>";
-        echo "Eligibility : {$row['Eligibility']} <br>";
-        echo "<div class='icons'>
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['Scheme_Title']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Scheme_Date']) . "</td>";
+        echo "<td>" . nl2br(htmlspecialchars($row['Scheme_Description'])) . "</td>";
+        echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Category']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Eligibility']) . "</td>";
+        echo "<td>
                 <a href='edit_scheme.php?id={$row['Scheme_ID']}'>✏️ Edit</a>
                 <a href='delete_scheme.php?id={$row['Scheme_ID']}' onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
-              </div>";
-        echo "</div><hr>";
+              </td>";
+        echo "</tr>";
     }
+    echo "</table>";
 } else {
     echo "<p>No posted schemes yet.</p>";
 }

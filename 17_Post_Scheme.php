@@ -42,33 +42,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Post a Scheme</title>
-</head>
-<body>
-<h2>Post a New Scheme</h2>
-
-<form method="POST" action="">
-    <label>Scheme Title:</label><br>
-    <input type="text" name="Scheme_Title" required><br><br>
-
-    <label>Scheme Description:</label><br>
-    <textarea name="Scheme_Description" required></textarea><br><br>
-
-    <label>Location:</label><br>
-    <input type="text" name="Location" required><br><br>
-
-    <label>Category:</label><br>
-    <input type="text" name="Category" required><br><br>
-
-    <label>Scheme Date:</label><br>
-    <input type="date" name="Scheme_Date" required><br><br>
-
-    <button type="submit">Post Scheme</button>
-</form>
-
-</body>
-</html>

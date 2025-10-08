@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $stmt->execute();
     $stmt->store_result();
 
-    if($stmt->num_rows == 1){
+    if($stmt->num_rows === 1){
         $stmt->bind_result($NGO_ID, $fullname, $hashedPassword);
         $stmt->fetch();
 
@@ -43,12 +43,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $stmt->close();
 
     // ===== Rural Users Login =====
-    $stmt = $conn->prepare("SELECT id, fullname, password FROM rural_users WHERE fullname = ?");
+    $stmt = $conn->prepare("SELECT id, FullName, password FROM rural_users WHERE FullName = ?");
     $stmt->bind_param("s", $username_input);
     $stmt->execute();
     $stmt->store_result();
 
-    if($stmt->num_rows == 1){
+    if($stmt->num_rows === 1){
         $stmt->bind_result($Rural_ID, $FullName, $hashedPassword);
         $stmt->fetch();
 
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
-<!-- Optional: display login error -->
+
 <?php
 if(isset($error)){
     echo '<p style="color:red;">'.$error.'</p>';
