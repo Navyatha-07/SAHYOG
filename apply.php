@@ -28,7 +28,6 @@ if (isset($_POST['apply'])) {
     } elseif ($type == 'job') {
         $sql = "INSERT INTO Applications (Rural_ID, Job_ID) VALUES (?, ?)";
     }
-
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $rural_id, $id);
 

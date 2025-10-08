@@ -30,36 +30,20 @@ $result = $conn->query($sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-<meta charset="UTF-8">
-<title>Available Jobs for Rural Users</title>
-<style>
-.scheme {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #f9f9f9;
-}
-.scheme h3 {
-    margin: 0;
-    color: #333;
-}
-.details {
-    color: #555;
-}
-</style>
-</head>
-<body>
-<h2>Available Jobs</h2>
-=======
     <meta charset="UTF-8">
     <title>Available Jobs</title>
 </head>
 <body>
 <h1>Available Jobs</h1>
->>>>>>> 504ad1220247d0bf966a9853f29f24a10842c3e5
-
+<style>
+        table { width: 90%; margin: 30px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #888; text-align: center; }
+        th { background: #4B0082; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        button { background-color: #4B0082; color: white; padding: 7px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #6a0dad; }
+        h1 { text-align: center; color: #4B0082; }
+    </style>
 <?php
 if($result->num_rows > 0){
     echo "<table border='1' cellpadding='10'>

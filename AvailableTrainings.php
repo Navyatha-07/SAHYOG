@@ -40,9 +40,12 @@ $result = $conn->query($sql);
         <tr>
             <th>Training Title</th>
             <th>Description</th>
+            <th>Duration</th>
             <th>Location</th>
-            <th>Date</th>
-            <th>Category</th>
+            <th>Mode</th>
+            <th>Eligibility</th>
+            <th>Skills</th>
+            <th>Contact</th>
             <th>Apply</th>
         </tr>
         <?php
@@ -51,9 +54,12 @@ $result = $conn->query($sql);
                 echo "<tr>
                         <td>{$row['Training_Title']}</td>
                         <td>{$row['Training_Description']}</td>
+                        <td>{$row['Duration']}</td>
                         <td>{$row['location']}</td>
-                        <td>{$row['Training_Date']}</td>
-                        <td>{$row['Category']}</td>
+                        <td>{$row['Mode']}</td>
+                        <td>{$row['Eligibility']}</td>
+                        <td>{$row['Skills']}</td>
+                        <td>{$row['Contact']}</td>
                         <td>
                             <form method='POST' action='Apply.php'>
                                 <input type='hidden' name='type' value='training'>
