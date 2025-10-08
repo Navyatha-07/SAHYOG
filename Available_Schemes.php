@@ -4,6 +4,7 @@ print_r($_SESSION);
 echo "</pre>";
 exit;
 session_start();
+<<<<<<< HEAD
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 if(!isset($_SESSION['RuralUser_ID'])){
@@ -14,10 +15,19 @@ $RuralUser_ID =$_SESSION['RuralUser_ID'];
 
 // Connect to database
 $conn = new mysqli("localhost", "root", "", "sahyog1");
+=======
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sahyog1";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+>>>>>>> 504ad1220247d0bf966a9853f29f24a10842c3e5
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+<<<<<<< HEAD
 // Fetch all schemes (from all NGOs)
 $query = "SELECT s.*, n.fullname
           FROM scheme s 
@@ -26,31 +36,34 @@ $query = "SELECT s.*, n.fullname
 
 $result = $conn->query($query);
 if(!$result) die("Query error:".$conn -> error);
-?>
+=======
+if(!isset($_SESSION['Rural_ID'])) {
+    echo "<p style='color:red;'>You are not logged in!</p>";
+    exit;
+}
 
+$sql = "SELECT * FROM Scheme WHERE status='active'";
+$result = $conn->query($sql);
+>>>>>>> 504ad1220247d0bf966a9853f29f24a10842c3e5
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Available Schemes for Rural Users</title>
-<style>
-.scheme {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #f9f9f9;
-}
-.scheme h3 {
-    margin: 0;
-    color: #333;
-}
-.details {
-    color: #555;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Schemes</title>
+    <style>
+        table { width: 90%; margin: 30px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #888; text-align: center; }
+        th { background: #4B0082; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        button { background-color: #4B0082; color: white; padding: 7px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #6a0dad; }
+        h1 { text-align: center; color: #4B0082; }
+    </style>
 </head>
 <body>
+<<<<<<< HEAD
 <h2>Available Schemes</h2>
 
 <?php
@@ -76,5 +89,43 @@ if ($result && $result->num_rows > 0) {
 }
 $conn->close();
 ?>
+=======
+    <h1>Available Schemes</h1>
+    <table>
+        <tr>
+            <th>Scheme Title</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Eligibility</th>
+            <th>Category</th>
+            <th>Apply</th>
+        </tr>
+        <?php
+        if ($result && $result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$row['Scheme_Title']}</td>
+                        <td>{$row['Scheme_Description']}</td>
+                        <td>{$row['location']}</td>
+                        <td>{$row['Scheme_Date']}</td>
+                        <td>{$row['Eligibility']}</td>
+                        <td>{$row['Category']}</td>
+                        <td>
+                            <form method='POST' action='Apply.php'>
+                                <input type='hidden' name='type' value='scheme'>
+                                <input type='hidden' name='id' value='{$row['Scheme_ID']}'>
+                                <button type='submit' name='apply'>Apply</button>
+                            </form>
+                        </td>
+                    </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='7'>No active schemes available.</td></tr>";
+        }
+        ?>
+    </table>
+>>>>>>> 504ad1220247d0bf966a9853f29f24a10842c3e5
 </body>
 </html>
+<?php $conn->close(); ?>

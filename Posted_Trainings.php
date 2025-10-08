@@ -1,49 +1,59 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sahyog1";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if($conn->connect_error){
-    die("Connection failed: " . $conn->connect_error);
+if(!isset($_SESSION['NGO_ID'])){
+    echo "<p style='color:red;'>You are not logged in!</p>";
+    exit;
 }
 
-// Fetch all trainings
-$stmt = $conn->prepare("SELECT Trainings.*, ngo_users.nameofNGO FROM Trainings 
-                        JOIN ngo_users ON Trainings.NGO_ID = ngo_users.id
-                        ORDER BY Posted_Date DESC");
+$NGO_ID = $_SESSION['NGO_ID'];
+
+$conn = new mysqli("localhost","root","","sahyog1");
+if($conn->connect_error) die("Connection failed: ".$conn->connect_error);
+
+$stmt = $conn->prepare("SELECT * FROM Trainings WHERE NGO_ID = ? ORDER BY Posted_Date DESC");
+$stmt->bind_param("i", $NGO_ID);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Posted Trainings</title>
+<meta charset="UTF-8">
+<title>Posted Trainings</title>
 </head>
 <body>
-    <h2>All Posted Trainings</h2>
-    <?php
-    if($result->num_rows > 0){
-        while($row = $result->fetch_assoc()){
-            echo "<b>{$row['Training_Title']}</b> ({$row['Posted_Date']})<br>";
-            echo "{$row['Training_Description']}<br>";
-            echo "Duration: {$row['Duration']} | Location: {$row['location']} | Mode: {$row['Mode']}<br>";
-            echo "Eligibility: {$row['Eligibility']} | Skills: {$row['Skills']} | Contact: {$row['Contact']}<br>";
-            echo "Posted by: {$row['nameofNGO']}<hr>";
-        }
-    } else {
-        echo "No trainings posted yet.";
+<h2>Your Posted Trainings</h2>
+<?php
+if(isset($_GET['success']) && $_GET['success'] == 1){
+    echo '<p style="color: green;">Training Posted Successfully!</p>';
+}
+
+if($result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
+        $title = $row['Training_Title'] ?? '';
+        $desc = $row['Training_Description'] ?? '';
+        $date = $row['Training_Date'] ?? '';
+        $duration = $row['Duration'] ?? '';
+        $location = $row['Location'] ?? '';
+        $mode = $row['Mode'] ?? '';
+        $eligibility = $row['Eligibility'] ?? '';
+        $skills = $row['Skills'] ?? '';
+        $contact = $row['Contact'] ?? '';
+
+        echo "<b>$title</b> ($date)<br>";
+        echo "$desc<br>";
+        echo "Duration: $duration | Location: $location | Mode: $mode<br>";
+        echo "Eligibility: $eligibility | Skills: $skills | Contact: $contact<br><hr>";
     }
-    $stmt->close();
-    $conn->close();
-    ?>
+} else {
+    echo "<p>No trainings posted yet.</p>";
+}
+$stmt->close();
+$conn->close();
+?>
 </body>
 </html>
-
 
