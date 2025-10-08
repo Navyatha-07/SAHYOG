@@ -1,0 +1,367 @@
+/* ===== Header ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    background-color: #4B0082; /* Eggplant Indigo */
+    color: #f5f5f5;
+}
+.logo h1 {
+    font-size: 3.2rem;
+    margin-bottom: 5px;
+    letter-spacing: 0.3cm;
+    color: #e0d7f9; /* soft lavender */
+}
+.logo p {
+    font-size: 1.4rem;
+    color: #d1c4e9;
+}
+.join {
+    font-size: 3rem;
+    color: #fff;
+}
+
+/* ===== Main Section ===== */
+.main {
+    font-size: 3.5rem;
+    padding: 40px 10px;
+    margin: 80px;
+    text-align: center;
+    color: #2d2d44; /* deep muted navy */
+}
+
+/* ===== Navigation ===== */
+.menu ul, .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+.nav-list li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+}
+.nav-list li a:hover {
+    color: #87cefa; /* light sky blue */
+}
+
+/* ===== Buttons ===== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.buttons button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #4B0082;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+.buttons button:hover {
+    background-color: #3a0069; /* darker eggplant */
+}
+
+/* ===== Footer ===== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2d2d44;
+    font-size: 1rem;
+    margin-top: 50px;
+    color: #dcdcdc;
+}
+
+/* ===== Body ===== */
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background-color: #fafafa; /* light minimal background */
+    margin: 0;
+    padding: 20px;
+}
+
+/* ===== Headings ===== */
+h1 {
+    text-align: center;
+    color: #2d2d44;
+    margin-bottom: 30px;
+}
+
+/* ===== Login Page ===== */
+.loginBody {
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="tel"] {
+    width: 90%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #4B0082;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #3a0069;
+}
+
+/* ===== Cards ===== */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+.card1, .card2, .card3, .card4 {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    width: 230px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+.card1 h2, .card2 h2, .card3 h2, .card4 h2 {
+    font-size: 1.6rem;
+    color: #2d2d44;
+    margin-bottom: 10px;
+}
+.card1 p, .card2 p, .card3 p, .card4 p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4B0082;
+}
+
+/* ===== Services ===== */
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.services-cards {
+    background-color: #ffffff;
+    margin: 20px;
+    border-radius: 12px;
+    padding: 20px;
+    width: 220px;
+    height: 200px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.services-cards:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+.services-cards h3 {
+    font-size: 1.4rem;
+    color: #2d2d44;
+    margin-bottom: 10px;
+}
+.services-cards p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Signup options side by side */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    gap: 70px; /* Increased space between buttons */
+    margin-top: 50px;
+}
+
+/* Square buttons */
+.signup {
+    width: 180px;
+    height: 180px;
+    font-size: 1.5rem;
+    background-color: #4B0082;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* vertically center text */
+    text-align: center;
+    text-decoration: none; /* for <a> links */
+    transition: background-color 0.3s ease;
+}
+
+.signup:hover {
+    background-color: #3a0069;
+}
+
+
+
+/* Popup Modal */
+.popup {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Show popup when targeted */
+.popup:target {
+    display: flex;
+}
+
+/* Popup content box */
+.popup-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* Close button */
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    color: #4B0082;
+    text-decoration: none;
+}
+
+/* Popup buttons container */
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Individual popup buttons */
+.popup-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #4B0082;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.popup-btn:hover {
+    background-color: #3a0069;
+}
+
+/* Optional: Know More link style */
+.know-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4B0082;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.know-more:hover {
+    text-decoration: underline;
+}
+/* ===== Dropdown ===== */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 30px auto; /* center below cards */
+    text-align: center;
+    width: 230px; /* same width as cards for consistency */
+}
+
+.DropButton {
+    background-color: #4B0082; /* match your dashboard theme */
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%; /* full width like cards */
+    transition: background-color 0.3s ease;
+}
+
+.DropButton:hover {
+    background-color: #3a0069;
+}
+
+.DropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    z-index: 100;
+    top: 100%; /* position below button */
+    left: 0;
+}
+
+.DropdownContent a {
+    color: #2d2d44;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 1.3rem;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #eee; /* subtle separation */
+}
+
+.DropdownContent a:last-child {
+    border-bottom: none;
+}
+
+.DropdownContent a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .DropdownContent {
+    display: block;
+}
