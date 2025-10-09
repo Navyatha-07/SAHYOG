@@ -80,7 +80,7 @@ button:hover {
 </head>
 <body>
     <h2>Training Payment</h2>
-    <p>Amount: ₹299 (Dummy Payment)</p>
+    <p>Amount: ₹199</p>
     <form method="POST">
         <button type="submit">Pay Now</button>
     </form>
