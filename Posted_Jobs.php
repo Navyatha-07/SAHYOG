@@ -22,33 +22,72 @@ $result = $stmt->get_result();
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Posted Jobs</title>
+<title>Your Posted Jobs</title>
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+a {
+    text-decoration: none;
+    color: blue;
+    margin-right: 5px;
+}
+a:hover {
+    text-decoration: underline;
+}
+</style>
 </head>
 <body>
 <h2>Your Posted Jobs</h2>
 <?php
 if(isset($_GET['success']) && $_GET['success'] == 1){
-    echo '<p style="color: green;">Job Posted Successfully!</p>';
+    echo '<p style="color: green;">Jobs Posted Successfully!</p>';
 }
 
-if($result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $title = $row['Job_Title'] ?? '';
-        $desc = $row['Job_Description'] ?? '';
-        $location = $row['location'] ?? '';
-        $type = $row['Job_Type'] ?? '';
-        $salary = $row['Salary'] ?? '';
-        $eligibility = $row['Eligibility'] ?? '';
-        $experience = $row['Experience'] ?? '';
-        $contact = $row['Contact'] ?? '';
-
-        echo "<b>$title</b> ($type)<br>";
-        echo "$desc<br>";
-        echo "Location: $location | Salary: $salary | Eligibility: $eligibility<br>";
-        echo "Experience: $experience | Contact: $contact<br><hr>";
+if ($result->num_rows > 0) {
+    echo "<table>";
+    echo "<tr>
+            <th>Job_Title</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Eligibility</th>
+            <th>Salary</th>
+            <th>Job Type</th>
+            <th>Vacancies</th>
+            <th>Contact</th>
+            <th>Actions</th>
+          </tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['Job_Title']) . "</td>";
+        echo "<td>" . nl2br(htmlspecialchars($row['Job_Description'])) . "</td>";
+        echo "<td>" . nl2br(htmlspecialchars($row['location'])) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Job_Date']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Eligibility']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Salary']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Job_Type']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Vacancies']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Contact']) . "</td>";
+        echo "<td>
+                <a href='edit_scheme.php?id={$row['Job_ID']}'>✏️ Edit</a>
+                <a href='delete_scheme.php?id={$row['Job_ID']}' onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
+              </td>";
+        echo "</tr>";
     }
+    echo "</table>";
 } else {
-    echo "<p>No jobs posted yet.</p>";
+    echo "<p>No schemes posted yet.</p>";
 }
 $stmt->close();
 $conn->close();

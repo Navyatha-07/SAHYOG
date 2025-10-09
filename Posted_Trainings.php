@@ -22,34 +22,72 @@ $result = $stmt->get_result();
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Posted Trainings</title>
+<title>Your Posted Trainings</title>
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+a {
+    text-decoration: none;
+    color: blue;
+    margin-right: 5px;
+}
+a:hover {
+    text-decoration: underline;
+}
+</style>
 </head>
 <body>
 <h2>Your Posted Trainings</h2>
 <?php
 if(isset($_GET['success']) && $_GET['success'] == 1){
-    echo '<p style="color: green;">Training Posted Successfully!</p>';
+    echo '<p style="color: green;">Trainings Posted Successfully!</p>';
 }
 
-if($result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $title = $row['Training_Title'] ?? '';
-        $desc = $row['Training_Description'] ?? '';
-        $date = $row['Training_Date'] ?? '';
-        $duration = $row['Duration'] ?? '';
-        $location = $row['Location'] ?? '';
-        $mode = $row['Mode'] ?? '';
-        $eligibility = $row['Eligibility'] ?? '';
-        $skills = $row['Skills'] ?? '';
-        $contact = $row['Contact'] ?? '';
-
-        echo "<b>$title</b> ($date)<br>";
-        echo "$desc<br>";
-        echo "Duration: $duration | Location: $location | Mode: $mode<br>";
-        echo "Eligibility: $eligibility | Skills: $skills | Contact: $contact<br><hr>";
+if ($result->num_rows > 0) {
+    echo "<table>";
+    echo "<tr>
+            <th>Training Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>location</th>
+            <th>Mode</th>
+            <th>Eligibility</th>
+            <th>Skills</th>
+            <th>Contact</th>
+            <th>Actions</th>
+          </tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['Training_Title']) . "</td>";
+        echo "<td>" . nl2br(htmlspecialchars($row['Training_Description'])) . "</td>";
+        echo "<td>" . nl2br(htmlspecialchars($row['Training_Date'])) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Duration']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Mode']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Eligibility']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Skills']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Contact']) . "</td>";
+        echo "<td>
+                <a href='edit_scheme.php?id={$row['Training_ID']}'>✏️ Edit</a>
+                <a href='delete_scheme.php?id={$row['Training_ID']}' onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
+              </td>";
+        echo "</tr>";
     }
+    echo "</table>";
 } else {
-    echo "<p>No trainings posted yet.</p>";
+    echo "<p>No schemes posted yet.</p>";
 }
 $stmt->close();
 $conn->close();

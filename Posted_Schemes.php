@@ -22,7 +22,6 @@ $result = $stmt->get_result();
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
 <title>Your Posted Schemes</title>
 <style>
 table {
@@ -47,9 +46,6 @@ a:hover {
     text-decoration: underline;
 }
 </style>
-=======
-<title>Posted Schemes</title>
->>>>>>> 504ad1220247d0bf966a9853f29f24a10842c3e5
 </head>
 <body>
 <h2>Your Posted Schemes</h2>
@@ -58,7 +54,6 @@ if(isset($_GET['success']) && $_GET['success'] == 1){
     echo '<p style="color: green;">Scheme Posted Successfully!</p>';
 }
 
-<<<<<<< HEAD
 if ($result->num_rows > 0) {
     echo "<table>";
     echo "<tr>
@@ -83,19 +78,6 @@ if ($result->num_rows > 0) {
                 <a href='delete_scheme.php?id={$row['Scheme_ID']}' onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
               </td>";
         echo "</tr>";
-=======
-if($result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $title = isset($row['Scheme_Title']) ? $row['Scheme_Title'] : '';
-        $desc = isset($row['Scheme_Description']) ? $row['Scheme_Description'] : '';
-        $location = isset($row['location']) ? $row['location'] : '';
-        $category = isset($row['Category']) ? $row['Category'] : '';
-        $date = isset($row['Scheme_Date']) ? $row['Scheme_Date'] : '';
-
-        echo "<b>$title</b> ($date)<br>";
-        echo "$desc<br>";
-        echo "Location: $location | Category: $category<br><hr>";
->>>>>>> 504ad1220247d0bf966a9853f29f24a10842c3e5
     }
     echo "</table>";
 } else {

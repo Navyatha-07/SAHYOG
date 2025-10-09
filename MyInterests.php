@@ -28,6 +28,30 @@ if($conn->connect_error) die("Connection failed: ".$conn->connect_error);
     <meta charset="UTF-8">
     <title>My Interests</title>
 </head>
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+a {
+    text-decoration: none;
+    color: blue;
+    margin-right: 5px;
+}
+a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
 <body>
 <h1>My Applied Opportunities</h1>
 

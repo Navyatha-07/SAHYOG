@@ -43,3 +43,14 @@ Create TABLE  if not exists Scheme(
     Foreign Key (NGO_ID) REFERENCES ngo_users(id)
 );
 ALTER TABLE Scheme CHANGE ELigibility Eligibility TEXT NOT NULL;
+CREATE TABLE InterestedRurals (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    NGO_ID INT NOT NULL,
+    Rural_ID INT NOT NULL,
+    Job_ID INT NULL,
+    Training_ID INT NULL,
+    Scheme_ID INT NULL,
+    Applied_On DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (NGO_ID) REFERENCES ngo_users(id),
+    FOREIGN KEY (Rural_ID) REFERENCES rural_users(ID)
+);

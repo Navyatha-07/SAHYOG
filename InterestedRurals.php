@@ -1,40 +1,50 @@
 <?php
 session_start();
-error_reporting(0);
-
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sahyog1";
+
+// Create DB connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Check if NGO is logged in
 if (!isset($_SESSION['NGO_ID'])) {
-    echo "<p style='color:red; text-align:center;'>You are not logged in!</p>";
+    echo "<p style='color:red;'>You are not logged in as NGO!</p>";
     exit;
 }
 
-$NGO_ID = $_SESSION['NGO_ID'];
+$ngo_id = $_SESSION['NGO_ID'];
 
-$sql = "SELECT a.*, 
-       r.Rural_Name,
-       CASE 
-           WHEN a.Type='scheme' THEN s.Scheme_Title
-           WHEN a.Type='job' THEN j.Job_Title
-           WHEN a.Type='training' THEN t.Training_Title
-       END AS Title
-FROM applications a
-LEFT JOIN rural r ON a.Rural_ID = r.Rural_ID
-LEFT JOIN scheme s ON (a.Type='scheme' AND a.Item_ID=s.Scheme_ID)
-LEFT JOIN jobs j ON (a.Type='job' AND a.Item_ID=j.Job_ID)
-LEFT JOIN training t ON (a.Type='training' AND a.Item_ID=t.Training_ID)
-WHERE a.NGO_ID=? 
-ORDER BY a.Applied_Date DESC";
+// Fetch all applications for posts created by this NGO
+$sql = "
+SELECT 
+    r.FullName,
+    r.Email,
+    r.Location,
+    a.Applied_On,
+    CASE a.Type
+        WHEN 'job' THEN j.Job_Title
+        WHEN 'training' THEN t.Training_Title
+        WHEN 'scheme' THEN s.Scheme_Title
+    END AS PostTitle,
+    a.Type AS PostType
+FROM Applications a
+LEFT JOIN rural_users r ON a.Rural_ID = r.ID
+LEFT JOIN Jobs j ON a.App_ID = j.Job_ID AND a.Type = 'job'
+LEFT JOIN Trainings t ON a.App_ID = t.Training_ID AND a.Type = 'training'
+LEFT JOIN scheme s ON a.App_ID = s.Scheme_ID AND a.Type = 'scheme'
+WHERE ( (a.Type='job' AND j.NGO_ID = ?) 
+        OR (a.Type='training' AND t.NGO_ID = ?) 
+        OR (a.Type='scheme' AND s.NGO_ID = ?) )
+ORDER BY a.Applied_On DESC
+";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $NGO_ID);
+$stmt->bind_param("iii", $ngo_id, $ngo_id, $ngo_id);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -43,41 +53,47 @@ $result = $stmt->get_result();
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Interested Rural Users</title>
+<title>Interested Rurals</title>
 <style>
-body { font-family: Arial; margin: 20px; background: #f4f4f4; }
-h1 { color: #4B0082; text-align: center; }
-table { width: 100%; border-collapse: collapse; background: #fff; }
-th, td { border: 1px solid #ddd; padding: 10px; }
-th { background-color: #4B0082; color: white; }
+body { font-family: Arial; margin: 40px; background: #f9f9f9; }
+h2 { text-align:center; color:#333; }
+table { width:100%; border-collapse: collapse; background:#fff; box-shadow:0 0 5px rgba(0,0,0,0.1);}
+th, td { border:1px solid #ddd; padding:10px; text-align:left;}
+th { background:#f2f2f2;}
 </style>
 </head>
 <body>
+<h2>Rural Users Interested in Your Posts</h2>
 
-<h1>Rural Users Who Applied</h1>
+<?php if($result->num_rows === 0): ?>
+    <p style="text-align:center; color:red;">No rural users have applied yet.</p>
+<?php else: ?>
 <table>
 <tr>
-  <th>Rural User</th>
-  <th>Applied For</th>
-  <th>Type</th>
-  <th>Date</th>
+    <th>Name</th>
+    <th>Email ID</th>
+    <th>Location</th>
+    <th>Post Type</th>
+    <th>Post Title</th>
+    <th>Applied On</th>
 </tr>
-
-<?php
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-            <td>{$row['Rural_Name']}</td>
-            <td>{$row['Title']}</td>
-            <td>{$row['Type']}</td>
-            <td>{$row['Applied_Date']}</td>
-        </tr>";
-    }
-} else {
-    echo "<tr><td colspan='4' style='text-align:center;'>No applications yet</td></tr>";
-}
-$conn->close();
-?>
+<?php while($row = $result->fetch_assoc()): ?>
+<tr>
+    <td><?php echo htmlspecialchars($row['FullName']); ?></td>
+    <td><?php echo htmlspecialchars($row['Email']); ?></td>
+    <td><?php echo htmlspecialchars($row['Location']); ?></td>
+    <td><?php echo ucfirst($row['PostType']); ?></td>
+    <td><?php echo htmlspecialchars($row['PostTitle']); ?></td>
+    <td><?php echo htmlspecialchars($row['Applied_On']); ?></td>
+</tr>
+<?php endwhile; ?>
 </table>
+<?php endif; ?>
+
 </body>
 </html>
+
+<?php
+$stmt->close();
+$conn->close();
+?>
