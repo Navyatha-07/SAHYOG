@@ -74,8 +74,8 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['Category']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Eligibility']) . "</td>";
         echo "<td>
-                <a href='edit_scheme.php?id={$row['Scheme_ID']}'>✏️ Edit</a>
-                <a href='delete_scheme.php?id={$row['Scheme_ID']}' onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
+        <a href='Edit.php?type=scheme&id=" . $row['Scheme_ID'] . "'>✏️ Edit</a>;
+                <a href='Delete.php?type=scheme&id=" . $row['Scheme_ID'] ."' onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
               </td>";
         echo "</tr>";
     }

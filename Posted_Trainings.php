@@ -80,8 +80,9 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['Skills']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Contact']) . "</td>";
         echo "<td>
-                <a href='edit_scheme.php?id={$row['Training_ID']}'>✏️ Edit</a>
-                <a href='delete_scheme.php?id={$row['Training_ID']}' onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
+                <a href='Edit.php?type=trainings&id=" . $row['Training_ID'] . "'>✏️ Edit</a>;
+                <a href='Delete.php?type=trainings&id=".$row['Training_ID'] ."' 
+                onclick='return confirm(\"Are you sure you want to delete this scheme?\")'>🗑 Delete</a>
               </td>";
         echo "</tr>";
     }

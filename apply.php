@@ -8,6 +8,8 @@ $dbname = "sahyog1";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+            echo "Applied Succesfully! ,Your applications:";
+
 }
 
 if (!isset($_SESSION['Rural_ID'])) {
@@ -64,7 +66,7 @@ if (isset($_POST['apply'], $_POST['type'], $_POST['id'])) {
             $stmt3->execute();
             $stmt3->close();
         }
-
+        echo "Applied Succesfully! ,Your applications";
         header("Location: MyInterests.php?applied=1");
         exit;
 
