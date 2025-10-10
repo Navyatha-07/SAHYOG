@@ -61,10 +61,10 @@ $result = $conn->query($sql);
                         <td>{$row['Skills']}</td>
                         <td>{$row['Contact']}</td>
                         <td>
-                            <form method='POST' action='Apply.php'>
+                            <form method='POST' action='payment_amount.php'>
                                 <input type='hidden' name='type' value='training'>
                                 <input type='hidden' name='id' value='{$row['Training_ID']}'>
-                                <button type='submit' name='apply'>Apply</button>
+                                <button type='submit' name='apply'>Pay&Apply</button>
                             </form>
                         </td>
                     </tr>";
