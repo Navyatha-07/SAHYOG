@@ -105,9 +105,9 @@ $job_sql->close();
 $training_sql = $conn->prepare("
     SELECT t.Training_ID, t.Training_Title, t.Training_Description, t.location, t.Training_Date, t.Duration, t.Mode, t.Eligibility, t.Skills, t.Contact,
            p.Method, p.Amount
-    FROM trainings t
-    INNER JOIN applications a ON a.Training_ID = t.Training_ID
-    LEFT JOIN payments p ON a.Training_ID = p.Training_ID AND a.Rural_ID = p.Rural_ID
+    FROM training_applications a
+    INNER JOIN trainings t ON a.Training_ID = t.Training_ID
+    LEFT JOIN payment p ON a.Training_ID = p.Training_ID AND a.Rural_ID = p.Rural_ID
     WHERE a.Rural_ID = ?
     ORDER BY t.Posted_Date DESC
 ");
@@ -117,7 +117,9 @@ $training_result = $training_sql->get_result();
 
 if($training_result->num_rows > 0){
     echo "<h2>Applied Trainings</h2><table>
-    <tr><th>Title</th><th>Description</th><th>Location</th><th>Date</th><th>Duration</th><th>Mode</th><th>Eligibility</th><th>Skills</th><th>Contact</th><th>Paid Via</th></tr>";
+    <tr><th>Title</th><th>Description</th><th>Location</th><th>Date</th>
+    <th>Duration</th><th>Mode</th><th>Eligibility</th><th>Skills</th>
+    <th>Contact</th><th>Paid Via</th></tr>";
     while($row = $training_result->fetch_assoc()){
         $method = $row['Method'] ?? 'N/A';
         $amount = $row['Amount'] ?? '0';

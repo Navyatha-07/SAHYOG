@@ -1,5 +1,10 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
+echo "<pre>POST: "; print_r($_POST); 
+echo "SESSION: "; print_r($_SESSION); 
+echo "</pre>";
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -27,17 +32,17 @@ SELECT
     r.Location,
     a.Applied_On,
     CASE a.Type
-        WHEN 'job' THEN j.Job_Title
+        WHEN 'jobs' THEN j.Job_Title
         WHEN 'training' THEN t.Training_Title
         WHEN 'scheme' THEN s.Scheme_Title
     END AS PostTitle,
     a.Type AS PostType
 FROM Applications a
 LEFT JOIN rural_users r ON a.Rural_ID = r.ID
-LEFT JOIN Jobs j ON a.App_ID = j.Job_ID AND a.Type = 'job'
+LEFT JOIN jobs j ON a.App_ID = j.Job_ID AND a.Type = 'jobs'
 LEFT JOIN Trainings t ON a.App_ID = t.Training_ID AND a.Type = 'training'
 LEFT JOIN scheme s ON a.App_ID = s.Scheme_ID AND a.Type = 'scheme'
-WHERE ( (a.Type='job' AND j.NGO_ID = ?) 
+WHERE ( (a.Type='jobs' AND j.NGO_ID = ?) 
         OR (a.Type='training' AND t.NGO_ID = ?) 
         OR (a.Type='scheme' AND s.NGO_ID = ?) )
 ORDER BY a.Applied_On DESC

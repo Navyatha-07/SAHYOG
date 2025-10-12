@@ -23,7 +23,8 @@ if($conn->connect_error){
 }
 
 // Fetch jobs
-$sql = "SELECT Job_ID, Job_Title, Job_Description, location, Job_Date, Eligibility, Salary, Job_Type, Vacancies, Contact FROM jobs WHERE status='active' ORDER BY Posted_Date DESC";
+$sql = "SELECT Job_ID, Job_Title, Job_Description, location, Job_Date, Eligibility, 
+Salary, Job_Type, Vacancies, Contact FROM jobs WHERE status='active' ORDER BY Posted_Date DESC";
 $result = $conn->query($sql);
 ?>
 
