@@ -2,29 +2,19 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
-echo "<pre>POST: "; print_r($_POST); 
-echo "SESSION: "; print_r($_SESSION); 
-echo "</pre>";
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sahyog1";
-
-// Create DB connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-// Check if NGO is logged in
 if (!isset($_SESSION['NGO_ID'])) {
     echo "<p style='color:red;'>You are not logged in as NGO!</p>";
     exit;
 }
-
 $ngo_id = $_SESSION['NGO_ID'];
-
-// Fetch all applications for posts created by this NGO
 $sql = "
 SELECT 
     r.FullName,
@@ -47,7 +37,6 @@ WHERE ( (a.Type='jobs' AND j.NGO_ID = ?)
         OR (a.Type='scheme' AND s.NGO_ID = ?) )
 ORDER BY a.Applied_On DESC
 ";
-
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("iii", $ngo_id, $ngo_id, $ngo_id);
 $stmt->execute();
@@ -69,9 +58,9 @@ th { background:#f2f2f2;}
 </head>
 <body>
 <h2>Rural Users Interested in Your Posts</h2>
-
 <?php if($result->num_rows === 0): ?>
-    <p style="text-align:center; color:red;">No rural users have applied yet.</p>
+    <p style="text-align:center; color:red;">
+        No rural users have applied yet.</p>
 <?php else: ?>
 <table>
 <tr>

@@ -57,14 +57,13 @@ if(isset($_GET['success']) && $_GET['success'] == 1){
 if ($result->num_rows > 0) {
     echo "<table>";
     echo "<tr>
-            <th>Job_Title</th>
+            <th>Job Title</th>
             <th>Description</th>
             <th>Location</th>
             <th>Date</th>
             <th>Eligibility</th>
             <th>Salary</th>
             <th>Job Type</th>
-            <th>Vacancies</th>
             <th>Contact</th>
             <th>Actions</th>
           </tr>";
@@ -77,7 +76,6 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['Eligibility']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Salary']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Job_Type']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['Vacancies']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Contact']) . "</td>";
         echo "<td>
                 <a href='Edit.php?type=jobs&id=" . $row['Job_ID'] . "'>
