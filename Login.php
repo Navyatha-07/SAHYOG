@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['usertype'] = 'ngo';
             $stmt->close();
             $conn->close();
-            header("Location: 14_NGO_dashboard.html");
+            header("Location: 14_NGO_dashboard.php");
             exit;
         } else {
             $error = "Invalid Username or Password";
@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['Rural_ID'] = $Rural_ID;
             $stmt->close();
             $conn->close();
-            header("Location: 15_Rural_dashboard.html");
+            header("Location: 15_Rural_dashboard.php");
             exit;
         } else {
             $error = "Invalid Username or Password";

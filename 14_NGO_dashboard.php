@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// If user is not logged in, redirect to NGO login
+if (!isset($_SESSION['username']) || $_SESSION['usertype'] !== 'ngo') {
+    header("Location: 10_NGOLogin.html");
+    exit;
+}
+
+$name = $_SESSION['username']; // NGO fullname from login
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +22,7 @@
 
     <p>WELCOME <?php echo htmlspecialchars($name); ?>,</p>
     <h1>Quick Summary</h1>
-    
+
     <div class="card-container">
         <div class="card1">
             <a href="Posted_Schemes.php">
