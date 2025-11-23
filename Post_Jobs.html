@@ -6,19 +6,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <h1>Post a Job</h1>
   <form action="Post_Job.php" method="POST">
-    <!-- Optional: hidden NGO_ID if you want to send it -->
     <input type="hidden" name="NGO_ID" value="<?php echo $_SESSION['NGO_ID']; ?>">
-
     <input type="text" name="Job_Title" placeholder="Enter job title" required>
     <textarea name="Job_Description" placeholder="Brief description of the job" required></textarea>
     <input type="text" name="location" placeholder="e.g. State, City" required>
     <input type="date" name="Job_Date" required>
     <input type="text" name="Eligibility" placeholder="e.g. B.Sc, 2 years experience">
     <input type="text" name="Salary" placeholder="e.g. 30,000/month">
-    
     <select name="Job_Type" required>
         <option value="">-- Select job type --</option>
         <option value="full-time">Full-Time</option>
@@ -26,12 +22,8 @@
         <option value="internship">Internship</option>
         <option value="contract">Contract</option>
     </select>
-
-    <input type="number" name="Vacancies" placeholder="Number of vacancies">
     <input type="text" name="Contact" placeholder="Email or phone number">
-
     <button type="submit">Submit</button>
   </form>
-
 </body>
 </html>
