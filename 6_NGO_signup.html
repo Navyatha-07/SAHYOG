@@ -14,8 +14,9 @@
 
         <input type="text" 
         name="fullname" 
+        placeholder="FULL NAME"
         pattern="[A-Za-z ]{3,}" 
-        placeholder="FULL NAME">
+        required>
 
         <input type="text"  
         name="email" 
@@ -34,8 +35,7 @@
 
         <input type="password" 
                name="Password" 
-               placeholder="Password must be at least
-                8 characters and include uppercase, 
+               placeholder="Password must be at least 8 characters and include uppercase, 
                 lowercase, number, and symbol"
                minlength="8" 
                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)
