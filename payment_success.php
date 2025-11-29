@@ -30,18 +30,22 @@ if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 $conn->begin_transaction();
 try {
     // 1️⃣ Insert application if not exists
-    $checkApp = $conn->prepare("SELECT * FROM training_applications WHERE Rural_ID=? AND Training_ID=?");
+    $checkApp = $conn->prepare("SELECT * FROM training_applications 
+    WHERE Rural_ID=? AND Training_ID=?");
     $checkApp->bind_param("ii", $Rural_ID, $Training_ID);
     $checkApp->execute();
     $appResult = $checkApp->get_result();
     if ($appResult->num_rows == 0) {
-        $stmtApp = $conn->prepare("INSERT INTO training_applications (Rural_ID, Training_ID, Status) VALUES (?, ?, 'Applied')");
+        $stmtApp = $conn->prepare("INSERT INTO training_applications
+         (Rural_ID, Training_ID, Status) VALUES (?, ?, 'Applied')");
         $stmtApp->bind_param("ii", $Rural_ID, $Training_ID);
         $stmtApp->execute();
     }
 
     // 2️⃣ Insert payment record
-    $stmtPayment = $conn->prepare("INSERT INTO payment (Rural_ID, Training_ID, Method, Amount, Status) VALUES (?, ?, ?, ?, 'Success')");
+    $stmtPayment = $conn->prepare("INSERT INTO payment
+     (Rural_ID, Training_ID, Method, Amount, Status) 
+     VALUES (?, ?, ?, ?, 'Success')");
     $stmtPayment->bind_param("iisd", $Rural_ID, $Training_ID, $method, $amount);
     $stmtPayment->execute();
 $type = 'training';
