@@ -1,26 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Post Training</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <h1>Post Training</h1>
-  <form action="Post_Training.php" method="POST">
-    <!-- Optional: hidden NGO_ID if you want to send it -->
-    <input type="hidden" name="NGO_ID" value="<?php echo $_SESSION['NGO_ID']; ?>">
 
-    <input type="text" name="Training_Title" placeholder="Enter training title" required>
-    <textarea name="Training_Description" placeholder="Brief description of the training" required></textarea>
-    <input type="date" name="Training_Date" required>
-    <input type="text" name="Duration" placeholder="e.g. 2 weeks, 5 days">
-    <input type="text" name="location" placeholder="e.g. City">
-    <input type="text" name="Mode" placeholder="e.g. Online, Offline">
-    <input type="text" name="Eligibility" placeholder="e.g. BSc/BTech students, All graduates">
-    <input type="text" name="Skills" placeholder="e.g. Technical skills, Soft skills">
-    <input type="text" name="Contact" placeholder="Email or phone number">
+  <form action="Post_Training.php" method="POST">
+
+    <input type="hidden"
+     name="NGO_ID"
+      value="<?php echo $_SESSION['NGO_ID']; ?>">
+
+    <input type="text"
+     name="Training_Title" 
+     placeholder="Enter training title" 
+     pattern="[A-Za-z\s]+"
+     title="Only letters and spaces allowed"
+     minlength="5"
+     required>
+
+
+    <textarea name="Training_Description"
+     placeholder="Brief description of the training" 
+     Minlength="5"
+     required></textarea>
+
+
+    <input type="date" 
+    name="Training_Date" 
+    onkeydown="return false;"
+    required>
+
+
+    <input type="text" 
+    name="Duration" 
+    pattern="[a-zA-Z0-9\-  ]+"
+    placeholder="e.g. 2 weeks, 5 days"
+    required>
+
+
+    <input type="text" 
+    name="location" 
+    pattern="[A-Za-z\s,]+"
+    title="Enter location like Hyderabad, Telangana, India"
+    placeholder="e.g. City"
+    required>
+
+
+    <select name="Mode" class="Select" required>
+      <option value="">--Select Mode --</option>
+      <option value="Offline">Offline</option>
+      <option value="Online">Online</option>
+      <option value="Hybrid">Hybrid</option>
+    </select>
+
+
+    <input type="text" 
+    name="Eligibility" 
+    minlength="5"
+     title="Enter valid Eligibility"
+    placeholder="e.g. BSc/BTech students, All graduates"
+    required>
+
+
+    <input type="text" 
+    name="Skills" 
+    placeholder="e.g. Technical skills, Soft skills"
+    minlength="5"
+    required>
+
+
+    <input type="text" 
+    name="Contact" 
+     pattern="(^[0-9]{10}$)|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+    placeholder="Email or phone number"
+    required>
+
 
     <button type="submit">Submit</button>
   </form>

@@ -1,26 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Post Scheme</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <h1>Post a Scheme</h1>
+
   <form action="17_Post_Scheme.php" method="POST">
+
     <label>Scheme title:</label>
-    <input type="text" name="Scheme_Title" placeholder="Enter scheme title" required>
+    <input type="text" 
+    name="Scheme_Title" 
+    placeholder="Enter scheme title"
+    pattern="[A-Za-z\s]+"
+    title="Only letters and spaces allowed"
+     required>
+
     <label>Description:</label>
-    <textarea name="Scheme_Description" placeholder="Brief description of the scheme"></textarea>
+    <textarea name="Scheme_Description" 
+    placeholder="Brief description of the scheme"
+    Minlength="5"
+    required>
+    </textarea>
+
     <label>Location:</label>
-    <input type="text" name="location" placeholder="e.g State, city, Online">
+    <input type="text"
+     name="location" 
+     placeholder="e.g State, city, Online"
+     pattern="[A-Za-z\s,]+"
+     title="Enter location like Hyderabad, Telangana, India"
+     required>
+
     <label>Date:</label>
-    <input type="date" name="Scheme_Date">
+    <input type="date"
+     name="Scheme_Date"
+     onkeydown="return false;"
+     required>
+
+
     <label>Eligibility:</label>
-    <input type="text" name="Eligibility" placeholder="e.g Students, Women, Farmers">
+    <input type="text"
+     name="Eligibility" 
+     minlength="5"
+     placeholder="e.g Students, Women, Farmers"
+     title="Enter valid Eligibility" 
+     required>
+
+
     <label>Category:</label>
-    <input type="text" name="Category" placeholder="e.g Education, Employment">
+    <input type="text" 
+     name="Category"
+      pattern="[A-Za-z\s]+"
+    placeholder="e.g Education, Employment">
+
+
     <button type="submit">Submit</button>
+
   </form>
 </body>
 </html>

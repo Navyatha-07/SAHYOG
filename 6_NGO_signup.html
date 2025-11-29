@@ -13,7 +13,6 @@
 
     <form action="7_NGOSignup.php" method="POST">
 
-        
         <input type="text" 
                name="fullname" 
                pattern="[A-Za-z\s]+"
@@ -21,14 +20,13 @@
                title="Only letters and spaces allowed"
                required>
 
-        
-        <input type="email"
+        <input type="text"
                name="email"
                placeholder="EMAIL ID"
+               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                title="Please enter a valid email address"
                required>
 
-        
         <input type="text" 
                name="mobile_number" 
                placeholder="MOBILE NO."
@@ -37,15 +35,14 @@
                title="Enter a valid 10-digit mobile number"
                required>
 
-        
         <input type="password" 
                name="password" 
-               placeholder="Password (8+ chars, uppercase, lowercase, number, symbol)"
+               placeholder="Password (8+ chars, uppercase,lowercase, number, symbol)"
                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}"
-               title="Must include uppercase, lowercase, number, symbol & be at least 8 characters"
+               title="Must include uppercase, lowercase, 
+               number, symbol & be at least 8 characters"
                required>
 
-        
         <input type="text" 
                name="nameofNGO" 
                pattern="[A-Za-z\s]+"
@@ -53,7 +50,6 @@
                title="NGO name must contain only letters and spaces"
                required>
 
-        
         <input type="text"
                name="location"
                pattern="[A-Za-z\s,]+"

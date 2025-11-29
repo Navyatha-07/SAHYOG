@@ -41,9 +41,18 @@ textarea {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-family: inherit;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 1rem;
 }
+.select{
+   width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+}
+
 
 textarea {
   resize: vertical;
