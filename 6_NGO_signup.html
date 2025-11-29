@@ -21,7 +21,8 @@
         name="email" 
         pattern = "^[a-zA-Z0-9._%+-]+@gmail.com\.com$"
         placeholder="EMAIL ID"
-        title = "please enter a valid email address">
+        title = "please enter a valid email address"
+        required>
 
         <input type="text" 
                name="MobileNumber" 
@@ -33,21 +34,29 @@
 
         <input type="password" 
                name="Password" 
-               placeholder="Password (min 8 characters,uppercase
-               , lowercase, number, symbol)"
-               pattern = "(?=.)"
-        
+               placeholder="Password must be at least
+                8 characters and include uppercase, 
+                lowercase, number, and symbol"
                minlength="8" 
+               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)
+               (?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}" 
+               title="Password must be at least 8 characters and
+                include uppercase, lowercase, number, and symbol" 
                required>
         
         <input type="text" 
-        name="nameofNGO" 
-        placeholder="Name of the NGO"
-        >
+               name="nameofNGO" 
+                pattern="[A-Za-z ]{3,}" 
+               placeholder="Name of the NGO"
+               title = "Must enter valid NGO name"
+        required>
 
         <input type="location" 
         name="location" 
-        placeholder=" Enter your Location">
+        pattern="[A-Za-z ]{3,}" 
+        placeholder=" Enter your Location"
+        title = "Must enter valid Location"
+        required>
 
         <button type="submit">SIGN UP </button></a>
     </form>
