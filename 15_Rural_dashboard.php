@@ -16,7 +16,7 @@ $name = $_SESSION['username'];
 </head>
 <body>
     
-    <p>WELCOME <?php echo htmlspecialchars($name); ?>,</p>
+    <p>Welcome <?php echo htmlspecialchars($name); ?>,</p>
     <h1> Quick Summary</h1>
 
     <div class="card-container">

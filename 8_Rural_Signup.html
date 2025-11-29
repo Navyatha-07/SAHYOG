@@ -1,23 +1,75 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rural_SIgnup</title>
+    <title>Rural_Signup</title>
     <link rel="stylesheet" href="stylesheet.css"/>
 </head>
 <body>
-    <h1 id="id1"> Fill the required fields </h1>
+    <h1 id="id1">Fill the required fields</h1>
+
     <form action="9_RuralSignup.php" method="POST">
-        <input type="text" name="FullName"placeholder="FULL NAME">
-        <input type="text" name="Email" placeholder="EMAIL ID">
-        <input type="text"  name="MobileNumber" placeholder="MOBILE NO." pattern="\d{10}">
-        <input type="password"  name="Password" placeholder="password must be greater than 8 characters">
-        <input type="text"name="Age" placeholder="Enter your Age">
-        <input type="text" name="location" placeholder=" Enter your Location">
-        <input type="text" name="Skills" placeholder=" Enter your Skills" required>
-        <input type="text"name="Needs" placeholder=" Enter your Needs">
-        <button> SUBMIT </button>
+
+        
+        <input type="text" 
+               name="FullName" 
+               placeholder="FULL NAME"
+               pattern="[A-Za-z ]{3,}" 
+               title="Full name must contain only letters and spaces"
+               required>
+
+        
+        <input type="email" 
+               name="Email" 
+               placeholder="EMAIL ID"
+               required>
+
+        
+        <input type="text" 
+               name="MobileNumber" 
+               placeholder="MOBILE NO."
+               pattern="\d{10}" 
+               maxlength="10"
+               title="Enter a valid 10-digit mobile number"
+               required>
+
+        
+        <input type="password" 
+               name="Password" 
+               placeholder="Password (min 8 characters)" 
+               minlength="8" 
+               required>
+
+        
+        <input type="number" 
+               name="Age" 
+               placeholder="Enter your Age" 
+               min="1" 
+               max="100"
+               required>
+
+        
+        <input type="text" 
+               name="location" 
+               placeholder="Enter your Location" 
+               pattern="[A-Za-z ]{3,}" 
+               title="Location must be at least 3 characters"
+               required>
+
+        
+        <input type="text" 
+               name="Skills" 
+               placeholder="Enter your Skills" 
+               required>
+
+        
+        <input type="text" 
+               name="Needs" 
+               placeholder="Enter your Needs">
+
+        <button type="submit">SUBMIT</button>
     </form>
+
 </body>
 </html>
