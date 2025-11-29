@@ -11,18 +11,18 @@
 
     <form action="9_RuralSignup.php" method="POST">
 
-        
         <input type="text" 
                name="FullName" 
                placeholder="FULL NAME"
                pattern="[A-Za-z ]{3,}" 
                title="Full name must contain only letters and spaces"
                required>
-
         
         <input type="email" 
                name="Email" 
+               pattern = "^[a-zA-Z0-9._%+-]+@gmail.com\.com$"
                placeholder="EMAIL ID"
+               title = "please enter a valid email address"
                required>
 
         

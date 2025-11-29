@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NGO signup</title>
     <link rel="stylesheet" href="stylesheet.css"/>
 </head>
+
 <body>
     <h1>Fill the required fields </h1>
     <form action="7_NGOSignup.php" method="POST">
-        <input type="text" name="fullname" placeholder="FULL NAME">
-        <input type="text"  name="email" placeholder="EMAIL ID">
-        <input type="text" name="mobile_number" placeholder="MOBILE NO.">
-        <input type="password"name="password" placeholder="password must be greater than 8 characters">
-        <input type="text" name="nameofNGO" placeholder="Name of the NGO">
-        <input type="location" name="location" placeholder=" Enter your Location">
+
+        <input type="text" 
+        name="fullname" 
+        pattern="[A-Za-z ]{3,}" 
+        placeholder="FULL NAME">
+
+        <input type="text"  
+        name="email" 
+        pattern = "^[a-zA-Z0-9._%+-]+@gmail.com\.com$"
+        placeholder="EMAIL ID"
+        title = "please enter a valid email address">
+
+        <input type="text" 
+               name="MobileNumber" 
+               placeholder="MOBILE NO."
+               pattern="\d{10}" 
+               maxlength="10"
+               title="Enter a valid 10-digit mobile number"
+               required>
+
+        <input type="password" 
+               name="Password" 
+               placeholder="Password (min 8 characters,uppercase
+               , lowercase, number, symbol)"
+               pattern = "(?=.)"
+        
+               minlength="8" 
+               required>
+        
+        <input type="text" 
+        name="nameofNGO" 
+        placeholder="Name of the NGO"
+        >
+
+        <input type="location" 
+        name="location" 
+        placeholder=" Enter your Location">
+
         <button type="submit">SIGN UP </button></a>
     </form>
 </body>
