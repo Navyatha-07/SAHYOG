@@ -9,56 +9,60 @@
 </head>
 
 <body>
-    <h1>Fill the required fields </h1>
+    <h1>Fill the required fields</h1>
+
     <form action="7_NGOSignup.php" method="POST">
 
+        
         <input type="text" 
-        name="fullname" 
-        pattern="[A-Za-z ]{3,}" 
-        placeholder="FULL NAME">
+               name="fullname" 
+               pattern="[A-Za-z\s]+"
+               placeholder="FULL NAME"
+               title="Only letters and spaces allowed"
+               required>
 
-        <input type="text"  
-        name="email" 
-        pattern = "^[a-zA-Z0-9._%+-]+@gmail.com\.com$"
-        placeholder="EMAIL ID"
-        title = "please enter a valid email address"
-        required>
+        
+        <input type="email"
+               name="email"
+               placeholder="EMAIL ID"
+               title="Please enter a valid email address"
+               required>
 
+        
         <input type="text" 
-               name="MobileNumber" 
+               name="mobile_number" 
                placeholder="MOBILE NO."
                pattern="\d{10}" 
                maxlength="10"
                title="Enter a valid 10-digit mobile number"
                required>
 
+        
         <input type="password" 
-               name="Password" 
-               placeholder="Password must be at least
-                8 characters and include uppercase, 
-                lowercase, number, and symbol"
-               minlength="8" 
-               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)
-               (?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}" 
-               title="Password must be at least 8 characters and
-                include uppercase, lowercase, number, and symbol" 
+               name="password" 
+               placeholder="Password (8+ chars, uppercase, lowercase, number, symbol)"
+               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}"
+               title="Must include uppercase, lowercase, number, symbol & be at least 8 characters"
                required>
+
         
         <input type="text" 
                name="nameofNGO" 
-                pattern="[A-Za-z ]{3,}" 
+               pattern="[A-Za-z\s]+"
                placeholder="Name of the NGO"
-               title = "Must enter valid NGO name"
-        required>
+               title="NGO name must contain only letters and spaces"
+               required>
 
-        <input type="location" 
-        name="location" 
-        pattern="[A-Za-z ]{3,}" 
-        placeholder=" Enter your Location"
-        title = "Must enter valid Location"
-        required>
+        
+        <input type="text"
+               name="location"
+               pattern="[A-Za-z\s,]+"
+               placeholder="City, State, Country"
+               title="Enter location like Hyderabad, Telangana, India"
+               required>
 
-        <button type="submit">SIGN UP </button></a>
+        <button type="submit">SIGN UP</button>
+
     </form>
 </body>
-</html> 
+</html>
