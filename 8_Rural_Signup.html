@@ -14,10 +14,14 @@
         <input type="text" 
                name="FullName" 
                placeholder="FULL NAME"
-               pattern="[A-Za-z ]{3,}" 
+               pattern="[A-Za-z ]+" 
                title="Full name must contain only letters and spaces"
                required>
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 22528a1bca585461631cba527c2c0d241959b29a
         <input type="email" 
                name="Email" 
                pattern = "^[a-zA-Z0-9._%+-]+@gmail.com\.com$"
@@ -25,7 +29,6 @@
                title = "please enter a valid email address"
                required>
 
-        
         <input type="text" 
                name="MobileNumber" 
                placeholder="MOBILE NO."
@@ -34,14 +37,14 @@
                title="Enter a valid 10-digit mobile number"
                required>
 
-        
         <input type="password" 
                name="Password" 
-               placeholder="Password (min 8 characters)" 
+               placeholder="Password must be at least 8 characters and include uppercase, lowercase, number, and symbol"
                minlength="8" 
+               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}" 
+               title="Password must be at least 8 characters and include uppercase, lowercase, number, and symbol" 
                required>
 
-        
         <input type="number" 
                name="Age" 
                placeholder="Enter your Age" 
@@ -52,24 +55,28 @@
         
         <input type="text" 
                name="location" 
-               placeholder="Enter your Location" 
-               pattern="[A-Za-z ]{3,}" 
-               title="Location must be at least 3 characters"
+               placeholder="City, State, Country" 
+               pattern="[A-Za-z\s,]+" 
+               title="Enter location like Hyderabad, Telangana, India"
                required>
 
         
         <input type="text" 
                name="Skills" 
                placeholder="Enter your Skills" 
+               pattern="[A-Za-z\s]+" 
+               title="Digits are not allowed in Skills"
                required>
 
-        
         <input type="text" 
                name="Needs" 
-               placeholder="Enter your Needs">
+               placeholder="Enter your Needs" 
+               pattern="[A-Za-z\s]+" 
+               title="Digits are not allowed in Needs">
 
         <button type="submit">SUBMIT</button>
     </form>
 
 </body>
 </html>
+
