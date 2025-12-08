@@ -120,6 +120,7 @@ input[type="text"],
 input[type="password"],
 input[type="number"],
 input[type="location"],
+input[type="email"], 
 .select{
     width: 100%;
     padding: 12px;

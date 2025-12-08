@@ -14,15 +14,15 @@ h1, h2 {
 
 /* ===== Form ===== */
 form {
-  max-width: 500px;      /* consistent width */
-  margin: 40px auto;     /* center form on page */
+  max-width: 500px;     
+  margin: 40px auto;    
   background-color: #ffffff;
-  padding: 30px;         /* slightly bigger padding */
+  padding: 30px;         
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  gap: 15px;             /* spacing between elements */
+  gap: 15px;             
 }
 
 /* ===== Form Labels & Inputs ===== */
@@ -36,6 +36,7 @@ input[type="number"],
 input[type="date"],
 input[type="tel"],
 input[type="password"],
+input[type="email"],
 textarea {
   width: 100%;
   padding: 12px;

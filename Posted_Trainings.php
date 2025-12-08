@@ -65,6 +65,7 @@ if ($result->num_rows > 0) {
             <th>Mode</th>
             <th>Eligibility</th>
             <th>Skills</th>
+            <th>Amount</th>
             <th>Contact</th>
             <th>Actions</th>
           </tr>";
@@ -77,6 +78,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['location']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Mode']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Eligibility']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Amount']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Skills']) . "</td>";
         echo "<td>" . htmlspecialchars($row['Contact']) . "</td>";
         echo "<td>

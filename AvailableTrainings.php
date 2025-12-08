@@ -25,13 +25,39 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Trainings</title>
     <style>
-        table { width: 90%; margin: 30px auto; border-collapse: collapse; }
-        th, td { padding: 10px; border: 1px solid #888; text-align: center; }
-        th { background: #4B0082; color: white; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-        button { background-color: #4B0082; color: white; padding: 7px 15px; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #6a0dad; }
-        h1 { text-align: center; color: #4B0082; }
+        table { 
+            width: 90%; 
+            margin: 30px auto;
+             border-collapse:
+              collapse; 
+            }
+        th, td {
+             padding: 10px;
+              border: 1px solid #888; 
+              text-align: center;
+             }
+        th {
+             background: #4B0082;
+              color: white;
+             }
+        tr:nth-child(even) {
+             background-color: #f2f2f2;
+             }
+        button {
+                 background-color: #4B0082;
+                 color: white;
+                 padding: 7px 15px;
+                 border: none;
+                 border-radius: 5px;
+                 cursor: pointer;
+                 }
+        button:hover {
+             background-color: #6a0dad;
+             }
+        h1 {
+             text-align: center;
+              color: #4B0082;
+             }
     </style>
 </head>
 <body>
@@ -45,6 +71,7 @@ $result = $conn->query($sql);
             <th>Mode</th>
             <th>Eligibility</th>
             <th>Skills</th>
+            <th>Amount</th>
             <th>Contact</th>
             <th>Apply</th>
         </tr>
@@ -59,12 +86,13 @@ $result = $conn->query($sql);
                         <td>{$row['Mode']}</td>
                         <td>{$row['Eligibility']}</td>
                         <td>{$row['Skills']}</td>
+                        <td>{$row['Amount']}</td>
                         <td>{$row['Contact']}</td>
                         <td>
                             <form method='POST' action='payment_amount.php'>
                                 <input type='hidden' name='type' value='training'>
                                 <input type='hidden' name='id' value='{$row['Training_ID']}'>
-                                <button type='submit' name='apply'>Pay&Apply</button>
+                                <button type='submit' name='apply'>Pay & Apply</button>
                             </form>
                         </td>
                     </tr>";

@@ -22,13 +22,11 @@
      placeholder="Enter training title" 
      pattern="[A-Za-z\s]+"
      title="Only letters and spaces allowed"
-     minlength="5"
      required>
 
 
     <textarea name="Training_Description"
      placeholder="Brief description of the training" 
-     Minlength="5"
      required></textarea>
 
 
@@ -41,7 +39,7 @@
     <input type="text" 
     name="Duration" 
     pattern="[a-zA-Z0-9\-  ]+"
-    placeholder="e.g. 2 weeks, 5 days"
+    placeholder=" 2 weeks, 5 days"
     required>
 
 
@@ -65,14 +63,20 @@
     name="Eligibility" 
     minlength="5"
      title="Enter valid Eligibility"
-    placeholder="e.g. BSc/BTech students, All graduates"
+    placeholder=" BSc/BTech students, All graduates"
     required>
 
 
     <input type="text" 
     name="Skills" 
-    placeholder="e.g. Technical skills, Soft skills"
+    placeholder=" Technical skills, Soft skills"
     minlength="5"
+    required>
+
+    <input type="number" 
+    name="Amount" 
+    placeholder="Enter Amount greater than 50"
+    min="50"
     required>
 
 
