@@ -18,7 +18,8 @@ $password = "";
 $dbname = "sahyog1";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-if($conn->connect_error) die("Connection failed: ".$conn->connect_error);
+if($conn->connect_error)
+     die("Connection failed: ".$conn->connect_error);
 ?>
 
 <!DOCTYPE html>
@@ -117,9 +118,18 @@ $training_result = $training_sql->get_result();
 
 if($training_result->num_rows > 0){
     echo "<h2>Applied Trainings</h2><table>
-    <tr><th>Title</th><th>Description</th><th>Location</th><th>Date</th>
-    <th>Duration</th><th>Mode</th><th>Eligibility</th><th>Skills</th>
-    <th>Contact</th><th>Paid Via</th></tr>";
+    <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Duration</th>
+    <th>Mode</th>
+    <th>Eligibility</th>
+    <th>Skills</th>
+    <th>Contact</th>
+    <th>Paid Via</th>
+    </tr>";
     while($row = $training_result->fetch_assoc()){
         $method = $row['Method'] ?? 'N/A';
         $amount = $row['Amount'] ?? '0';

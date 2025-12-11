@@ -14,6 +14,52 @@ $card  = $_POST['card'] ?? '';
 $expiry = $_POST['expiry'] ?? '';
 $cvv = $_POST['cvv'] ?? '';
 $upi = $_POST['upi'] ?? '';
+
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$dbname = "sahyog1";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+$Rural_ID    = $_SESSION['Rural_ID'];
+$Training_ID = $_SESSION['Training_ID'];
+$Method      = $_SESSION['method'];
+$Amount      = $_SESSION['amount'];
+
+// Insert into training_applications
+$stmt1 = $conn->prepare("
+    INSERT INTO training_applications (Rural_ID, Training_ID, Date)
+    VALUES (?, ?, NOW())
+");
+$stmt1->bind_param("ii", $Rural_ID, $Training_ID);
+$stmt1->execute();
+$stmt1->close();
+
+// Insert into payment
+$stmt2 = $conn->prepare("
+    INSERT INTO payment (Rural_ID, Training_ID, Method, Amount,Status, Paid_On)
+    VALUES (?, ?, ?, ?,'active', NOW())
+");
+$stmt2->bind_param("iisi", $Rural_ID, $Training_ID, $Method, $Amount);
+$stmt2->execute();
+$stmt2->close();
+
+// Insert into applications (for NGO dashboard)
+$stmt3 = $conn->prepare("
+    INSERT INTO applications (Rural_ID, App_ID, Type, Applied_On)
+    VALUES (?, ?, 'training', NOW())
+");
+$stmt3->bind_param("ii", $Rural_ID, $Training_ID);
+$stmt3->execute();
+$stmt3->close();
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +91,6 @@ border:none;
 border-radius:10px;
 margin-top:20px;">View My Interests</button>
 </a>
-
 </div>
-
 </body>
 </html>
