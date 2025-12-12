@@ -155,6 +155,6 @@ $training_sql->close();
 $conn->close();
 ?>
 
-<br><a href="15_Rural_dashboard.html">Back to Dashboard</a>
+<br><a href="15_Rural_dashboard.php">Back to Dashboard</a>
 </body>
 </html>
