@@ -1,0 +1,75 @@
+/*__________________________SIGNUP PAGE_____________________________*/
+.Heading{
+    font-size: 100px;
+    margin: 100px;
+    text-align: center;
+}
+.signup-container{
+     display: flex;
+    justify-content: center;
+    gap: 10vw;
+    margin-top: 200px;
+}
+.signup {
+    width: 40vw;
+    height: 50vh;
+    font-size: 56px;
+    background-color: #0d919b;
+    color: black;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    transition: background-color 0.3s ease;
+    letter-spacing: 1rem;
+    font-weight: bolder;
+}
+.signup:hover {
+    background-color: #3a0069;
+}
+
+/*_________________________SIGNUP FORMS____________________________*/
+/*________________________NGO AND RURAL______________________________*/
+.PageWrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form {
+    transform: scale(2.5);
+    transform-origin: center;
+    display:flex ;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    letter-spacing: 0.5px;
+}
+
+form input{
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+ form button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #85caf1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #3a0069;
+}
