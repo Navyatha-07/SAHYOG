@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors',1);
@@ -9,7 +9,6 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST'){
 }
 
 $method = $_SESSION['method'] ?? '';
-
 $card  = $_POST['card'] ?? '';
 $expiry = $_POST['expiry'] ?? '';
 $cvv = $_POST['cvv'] ?? '';
@@ -25,7 +24,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 
 $Rural_ID    = $_SESSION['Rural_ID'];
 $Training_ID = $_SESSION['Training_ID'];
@@ -43,8 +41,7 @@ $stmt1->close();
 
 // Insert into payment
 $stmt2 = $conn->prepare("
-    INSERT INTO payment (Rural_ID, Training_ID, Method,
-     Amount,Status, Paid_On)
+    INSERT INTO payment (Rural_ID, Training_ID, Method, Amount, Status, Paid_On)
     VALUES (?, ?, ?, ?,'active', NOW())
 ");
 $stmt2->bind_param("iisi", $Rural_ID, $Training_ID,
@@ -53,9 +50,10 @@ $stmt2->execute();
 $stmt2->close();
 
 // Insert into applications (for NGO dashboard)
+// → FIXED: removed App_ID because it is AUTO_INCREMENT
+// → Use Training_ID column properly
 $stmt3 = $conn->prepare("
-    INSERT INTO applications (Rural_ID, App_ID,
-     Type, Applied_On)
+    INSERT INTO applications (Rural_ID, Training_ID, Type, Applied_On)
     VALUES (?, ?, 'training', NOW())
 ");
 $stmt3->bind_param("ii", $Rural_ID, $Training_ID);
