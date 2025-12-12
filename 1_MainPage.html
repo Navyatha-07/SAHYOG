@@ -1,35 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Main Page</title>
-    <link rel="stylesheet" href="stylesheet.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,min-height=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Main Page</title>
+<link rel="stylesheet" href="stylesheet.css"/>
 </head>
-<body>
-    <header class="header">
-        <div class="logo">
-    <h1>SAHYOG</h1>
-    <p><bold>Bridging Gap Between NGO and Rural India</bold></p>
-        </div>
-     <nav class="menu">
-        <ul class="nav-list">
-            <li><a href="1_MainPage.html">HOME</a></li>
-            <li><a href="2_Services.html" >SERVICES</a></li>
-            <li><a href="3_AboutUs.html" >ABOUT US</a></li>
-            <li><a href="4_contact.html" >CONTACT US</a></li> 
+
+<body style="margin:0;
+             font-family:Arial, sans-serif; 
+             background:#f0f7ff;
+             display:flex;
+             flex-direction:column;
+             min-height:100vh;
+             overflow: hidden;">
+
+<header style="background:#d7e9ff; 
+               padding:80px 120px;
+               display:flex;
+               align-items:center; 
+               justify-content:space-between; 
+               box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+
+    <div style="color:#003366;">
+        <h1 style="margin:0;
+                  font-size:42px;
+                  letter-spacing: 1em;">SAHYOG</h1>
+        <p style="margin:2px 0 0 0;
+                  font-size:28px;">Bridging Gap Between NGO and Rural India</p>
+    </div>
+
+    <nav>
+        <ul style="list-style:none;
+                   margin:0;
+                   padding:0;
+                   display:flex; 
+                   gap:50px;
+                   font-size: 36px;">
+            <li><a href="1_MainPage.html" style="text-decoration:none; color:#003366; font-weight:bold;">HOME</a></li>
+            <li><a href="2_Services.html" style="text-decoration:none; color:#003366; font-weight:bold;">SERVICES</a></li>
+            <li><a href="3_AboutUs.html" style="text-decoration:none; color:#003366; font-weight:bold;">ABOUT US</a></li>
+            <li><a href="4_contact.html" style="text-decoration:none; color:#003366; font-weight:bold;">CONTACT US</a></li>
         </ul>
     </nav>
-    </header>
-<section class="main">
-        <p><center><big>Welcome to Sahyog!</big></center></p>
-    <center><p class="join"> JOIN US</p></center>
-    <a href="5_Signup.html"> <button class="m1"> SIGN UP</button></a>
-    <a href="Login.html" > <button class="m1"> LOGIN</button></a>
+
+</header>
+
+
+<section style="flex:1; 
+                display:flex; 
+                flex-direction:column;
+                align-items:center;
+                justify-content:center;
+                text-align:center; 
+                padding:40px 20px;">
+
+    <p style="font-size:32px; 
+              margin-top: 0%;
+              margin-bottom:11rem;
+              color:#002b5c;
+              font-size: 100px;
+              font-weight: bolder;
+              letter-spacing: 10px;">Welcome to SAHYOG</p>
+
+    <p style="font-size:50px; 
+              color:#004a99;
+               margin-bottom:50px;">JOIN US</p>
+<div style="
+            display: flex;
+            flex-direction:  row;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;">
+    <a href="5_Signup.html">
+        <button style="padding:24px 64px; 
+                       background:#b7d6ff;
+                       border:none;
+                       border-radius:16px; 
+                       color:#003366;
+                       font-weight:bold; 
+                       cursor:pointer;
+                       font-size:36px;">
+            SIGN UP
+        </button>
+    </a>
+
+    <a href="Login.html">
+        <button style="padding:24px 64px;
+                       background:#b7d6ff;
+                       border:none;
+                       border-radius:16px;
+                       color:#003366;
+                       font-weight:bold;
+                       cursor:pointer;
+                       font-size:36px;">
+            LOGIN
+        </button>
+    </a>
+</div>
+
 </section>
-    <footer class="footer">
-         &copy; 2025 Sahyog. All rights reserved.
-    </footer>
-    <script src="Script.js"></script>
+
+
+<footer style="background:#d7e9ff;
+               text-align:center; 
+               padding:45px; 
+               color:#003366;
+               margin-top:auto; 
+               box-shadow:0 -2px 5px rgba(0,0,0,0.1);
+               font-size: 36px;">
+    &copy; 2025 Sahyog. All rights reserved.
+</footer>
+
+<script src="Script.js"></script>
 </body>
 </html>
