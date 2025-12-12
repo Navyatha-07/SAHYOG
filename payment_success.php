@@ -43,16 +43,19 @@ $stmt1->close();
 
 // Insert into payment
 $stmt2 = $conn->prepare("
-    INSERT INTO payment (Rural_ID, Training_ID, Method, Amount,Status, Paid_On)
+    INSERT INTO payment (Rural_ID, Training_ID, Method,
+     Amount,Status, Paid_On)
     VALUES (?, ?, ?, ?,'active', NOW())
 ");
-$stmt2->bind_param("iisi", $Rural_ID, $Training_ID, $Method, $Amount);
+$stmt2->bind_param("iisi", $Rural_ID, $Training_ID,
+ $Method, $Amount);
 $stmt2->execute();
 $stmt2->close();
 
 // Insert into applications (for NGO dashboard)
 $stmt3 = $conn->prepare("
-    INSERT INTO applications (Rural_ID, App_ID, Type, Applied_On)
+    INSERT INTO applications (Rural_ID, App_ID,
+     Type, Applied_On)
     VALUES (?, ?, 'training', NOW())
 ");
 $stmt3->bind_param("ii", $Rural_ID, $Training_ID);

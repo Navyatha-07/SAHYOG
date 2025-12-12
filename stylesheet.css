@@ -73,12 +73,11 @@
 
 /* ===== Footer ===== */
 .footer {
+    background: #e75f5f;
+    color: white;
     text-align: center;
-    padding: 20px;
-    background-color: #2d2d44;
-    font-size: 1rem;
-    margin-top: 50px;
-    color: #dcdcdc;
+    padding: 12px 0;
+    flex-shrink: 0;
 }
 
 /* ===== Body ===== */
