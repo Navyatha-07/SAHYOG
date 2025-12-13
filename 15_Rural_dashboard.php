@@ -12,12 +12,12 @@ $name = $_SESSION['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rural Dashboard</title>
-    <link rel="stylesheet" href="stylesheet.css"/>
+    <link rel="stylesheet" href="Styling.css"/>
 </head>
 <body>
     
-    <p>Welcome <?php echo htmlspecialchars($name); ?>,</p>
-    <h1> Quick Summary</h1>
+    <p  class="welcome">Welcome <?php echo htmlspecialchars($name); ?>,</p>
+    <h1  class="heading"> Quick Summary</h1>
 
     <div class="card-container">
         <div class="card1">
@@ -42,7 +42,17 @@ $name = $_SESSION['username'];
     </div>
 
     <br>
-    <a href="logout.php"><button>Logout</button></a>
+    <a href="1_MainPage.html"><button style=" 
+    margin-top: 15px;
+    margin-left: 50px;
+    padding: 36px 80px;
+    background-color: #85caf1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 3rem;
+    ">Logout</button></a>
 
 </body>
 </html>

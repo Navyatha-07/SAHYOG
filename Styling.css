@@ -73,3 +73,111 @@ form input{
 button:hover {
     background-color: #3a0069;
 }
+/*______________________________DASHBOARDS_________________________________*/
+.card-container {
+    margin-top: 15vh;
+     margin-bottom: 10vh;
+      margin-left: 5vh;
+       margin-right: 10vh;
+    transform: scale(2.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    width: 100vw;
+}
+.card1, .card2, .card3, .card4 {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    width: 230px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+.card1 h2, .card2 h2, .card3 h2, .card4 h2 {
+    font-size: 1.6rem;
+    color: #2d2d44;
+    margin-bottom: 10px;
+}
+.card1 p, .card2 p, .card3 p, .card4 p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4B0082;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 50px 50px;
+    text-align: center;
+    width: 460px;
+}
+
+.DropButton {
+    background-color: #4B0082; 
+    color: #fff;
+    padding: 40px 50px;
+    font-size: 2.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%; 
+    transition: background-color 0.3s ease;
+}
+
+.DropButton:hover {
+    background-color: #3a0069;
+}
+
+.DropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 25px;
+    z-index: 100;
+    top: 100%; /* position below button */
+    left: 0;
+}
+
+.DropdownContent a {
+    color: #2d2d44;
+    padding: 40px 50px;
+    text-decoration: none;
+    display: block;
+    font-size: 2.5rem;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #eee; /* subtle separation */
+}
+
+.DropdownContent a:last-child {
+    border-bottom: none;
+}
+
+.DropdownContent a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .DropdownContent {
+    display: block;
+}
+.heading{
+    text-align: center;
+    color: #2d2d44;
+    font-size: 7rem;
+}
+.welcome{
+    font-size: 5rem;
+    font-weight: 600;
+    color: black;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    margin-left:50px;
+}

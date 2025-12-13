@@ -16,12 +16,12 @@ $name = $_SESSION['username']; // NGO fullname from login
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NGO Dashboard</title>
-    <link rel="stylesheet" href="stylesheet.css"/>
+    <link rel="stylesheet" href="Styling.css"/>
 </head>
-<body>
-
-    <p>WELCOME <?php echo htmlspecialchars($name); ?>,</p>
-    <h1>Quick Summary</h1>
+<body style="overflow: hidden;">
+    
+    <p class="welcome" >Welcome <?php echo htmlspecialchars($name); ?>,</p>
+    <h1 class="heading">Quick Summary</h1>
 
     <div class="card-container">
         <div class="card1">
@@ -31,7 +31,7 @@ $name = $_SESSION['username']; // NGO fullname from login
             </a>
         </div>
 
-        <div class="card2">
+         <div class="card2">
             <a href="Posted_Jobs.php">
                 <h2>Total Jobs Posted</h2>
                 <p>Numbers</p>
@@ -61,6 +61,7 @@ $name = $_SESSION['username']; // NGO fullname from login
             <a href="Post_Jobs.html">Post Jobs</a>
         </div>
     </div>
-
+    </div>
+</div>
 </body>
 </html>
