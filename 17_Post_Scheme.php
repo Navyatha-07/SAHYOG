@@ -25,7 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES (?, ?, ?, ?, ?, ?, ?, 'active', NOW())";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("issssss", $NGO_ID, $Scheme_Title, $Scheme_Description, $location, $Scheme_Date, $Eligibility, $Category);
+    $stmt->bind_param("issssss", $NGO_ID, $Scheme_Title, $Scheme_Description, $location,
+     $Scheme_Date, $Eligibility, $Category);
 
     if($stmt->execute()){
         $stmt->close();

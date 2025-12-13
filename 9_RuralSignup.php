@@ -34,16 +34,95 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($stmt == false){
         die("prepare failed".$conn->error);
     }
-    $stmt->bind_param("ssssssss", $FullName, $Email, $hashedPassword,$MobileNumber,$Age,$location,$Skills,$Needs);
-    if ($stmt ->execute()) {
-        echo "Signup successful! <br> <br>";
-        echo '<a href="Login.html"><button type="button">Go to Login</button></a>';
-    } else {
-        echo "Error: " . $stmt->error;
+    $stmt->bind_param("ssssssss",
+                      $FullName, 
+                      $Email, 
+                      $hashedPassword,
+                      $MobileNumber,
+                      $Age,
+                      $location,
+                      $Skills,
+                      $Needs);
+   if ($stmt->execute()) {
+            $result = true;
+        } else {
+            $errorMsg = $stmt->error;
+        }
+
+        $stmt->close();
     }
-    $stmt->close();
+
+    $check->close();
 }
-$check -> close();
-}
+
 $conn->close();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Status</title>
+</head>
+
+<body style="
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f2f6fc;
+    font-family:Arial, sans-serif;
+">
+
+<?php if ($result): ?>
+
+    <div style="
+        transform: scale(2.5);
+        transform-origin: center;
+        width: 400px;
+        background:#ffffff;
+        padding:40px;
+        text-align:center;
+        border-radius:12px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    ">
+        <h1 style="color:#1e7e34; margin-bottom:25px;">
+            Signup Successful!
+        </h1>
+
+        <a href="Login.html" style="text-decoration:none;">
+            <button type="button" style="
+                padding:12px 30px;
+                border:none;
+                border-radius:8px;
+                background:#007bff;
+                color:white;
+                font-size:16px;
+                cursor:pointer;
+            ">
+                Go to Login
+            </button>
+        </a>
+    </div>
+
+<?php else: ?>
+
+    <div style="
+        width:50%;
+        background:#ffffff;
+        padding:40px;
+        text-align:center;
+        border-radius:12px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    ">
+        <h1 style="color:#b02a37;">Signup Failed</h1>
+
+        <p style="margin-top:15px; color:#333;">
+            <?php echo htmlspecialchars($errorMsg); ?>
+        </p>
+    </div>
+
+<?php endif; ?>
+
+</body>
+</html>
