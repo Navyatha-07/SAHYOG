@@ -24,31 +24,109 @@ $result = $stmt->get_result();
 <meta charset="UTF-8">
 <title>Your Posted Trainings</title>
 <style>
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f6fc;
+    color: #2d2d44;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+/* Success message */
+p[style*="color: green"] {
+    text-align: center;
+    font-weight: 600;
+    background: #e6f7ee;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
+
+/* Table header */
 th {
-    background-color: #f2f2f2;
+    background: #4B0082;
+    color: #ffffff;
+    padding: 14px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+
+/* Table cells */
+td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+/* Zebra rows */
+tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+
+/* Hover effect */
+tr:hover {
+    background-color: #eef1ff;
+}
+
+/* Actions column */
+td:last-child {
+    white-space: nowrap;
+}
+
+/* Links */
 a {
     text-decoration: none;
-    color: blue;
-    margin-right: 5px;
+    font-weight: 600;
+    margin-right: 12px;
 }
+
+/* Edit link */
+a[href*="Edit.php"] {
+    color: #1a73e8;
+}
+
+/* Delete link */
+a[href*="Delete.php"] {
+    color: #d93025;
+}
+
+/* Hover links */
 a:hover {
-    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* No data text */
+p {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 30px;
 }
 </style>
 </head>
 <body>
-<h2>Your Posted Trainings</h2>
+
+<h2 style="font-size: 4rem;">Your Posted Trainings</h2>
+
 <?php
 if(isset($_GET['success']) && $_GET['success'] == 1){
     echo '<p style="color: green;">Trainings Posted Successfully!</p>';

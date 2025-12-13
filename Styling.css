@@ -43,6 +43,7 @@
     align-items: center;
 }
 form {
+    width: 10%;
     transform: scale(2.5);
     transform-origin: center;
     display:flex ;
@@ -54,13 +55,16 @@ form {
     letter-spacing: 0.5px;
 }
 
-form input{
+form input,
+form select,
+form textarea{
     padding: 12px;
-    margin-top: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
 }
+
  form button {
     margin-top: 15px;
     padding: 12px 20px;
@@ -181,3 +185,4 @@ button:hover {
     letter-spacing: 1px;
     margin-left:50px;
 }
+/*___________________________POST FORMS______________________________*/
