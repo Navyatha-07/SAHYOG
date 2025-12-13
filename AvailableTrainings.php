@@ -25,43 +25,121 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Trainings</title>
     <style>
-        table { 
-            width: 90%; 
-            margin: 30px auto;
-             border-collapse:
-              collapse; 
-            }
-        th, td {
-             padding: 10px;
-              border: 1px solid #888; 
-              text-align: center;
-             }
-        th {
-             background: #4B0082;
-              color: white;
-             }
-        tr:nth-child(even) {
-             background-color: #f2f2f2;
-             }
-        button {
-                 background-color: #4B0082;
-                 color: white;
-                 padding: 7px 15px;
-                 border: none;
-                 border-radius: 5px;
-                 cursor: pointer;
-                 }
-        button:hover {
-             background-color: #6a0dad;
-             }
-        h1 {
-             text-align: center;
-              color: #4B0082;
-             }
+          body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f6fc;
+    color: #2d2d44;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+/* Success message */
+p[style*="color: green"] {
+    text-align: center;
+    font-weight: 600;
+    background: #e6f7ee;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Table header */
+th {
+    background: #4B0082;
+    color: #ffffff;
+    padding: 18px;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+/* Table cells */
+td {
+    padding: 18px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Zebra rows */
+tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+
+/* Hover effect */
+tr:hover {
+    background-color: #eef1ff;
+}
+
+/* Actions column */
+td:last-child {
+    white-space: nowrap;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 12px;
+}
+
+/* Edit link */
+a[href*="Edit.php"] {
+    color: #1a73e8;
+}
+
+/* Delete link */
+a[href*="Delete.php"] {
+    color: #d93025;
+}
+
+/* Hover links */
+a:hover {
+    opacity: 0.8;
+}
+
+/* No data text */
+p {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 30px;
+}
+ button { 
+    background-color: #4B0082;
+     color: white; 
+     padding: 14px 25px;
+      border: none;
+       border-radius: 5px;
+        cursor: pointer;
+        font-size: 2rem;
+     }
+        button:hover { 
+            background-color: #6a0dad;
+         }
     </style>
 </head>
 <body>
-    <h1>Available Trainings</h1>
+    <h2 style="font-size: 3rem;">Available Trainings</h2>
     <table>
         <tr>
             <th>Training Title</th>

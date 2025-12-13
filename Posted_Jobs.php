@@ -64,18 +64,20 @@ table {
 th {
     background: #4B0082;
     color: #ffffff;
-    padding: 14px;
-    font-size: 14px;
+    padding: 18px;
+    font-size: 28px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-align: left;
 }
 
 /* Table cells */
 td {
-    padding: 14px;
+    padding: 18px;
     border-bottom: 1px solid #eee;
     vertical-align: top;
-    font-size: 14px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 /* Zebra rows */
