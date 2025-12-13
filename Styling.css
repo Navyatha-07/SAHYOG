@@ -43,9 +43,8 @@
     align-items: center;
 }
 form {
-    width: 10%;
-    transform: scale(2.5);
-    transform-origin: center;
+    width: 100%;
+    max-width: 520px;
     display:flex ;
     flex-direction: column;
     background-color: #ffffff;
@@ -58,23 +57,26 @@ form {
 form input,
 form select,
 form textarea{
-    padding: 12px;
-    margin-top: 5px;
+    width: 100%;
+    padding: 18px;
+    margin-top: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
+    font-size: 18px;
 }
 
  form button {
-    margin-top: 15px;
-    padding: 12px 20px;
+    margin-top: 18px;
+    padding: 14px;
     background-color: #85caf1;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
 }
-button:hover {
+ form button:hover {
     background-color: #3a0069;
 }
 /*______________________________DASHBOARDS_________________________________*/
