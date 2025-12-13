@@ -2,36 +2,29 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'rural')
-    {
+
+if (!isset($_SESSION['Rural_ID'])) {
     echo "<p style='color:red;'>You are not logged in!</p>";
     exit;
 }
-$rural_username = $_SESSION['username'];
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sahyog1";
-$conn = new mysqli($servername, $username, $password, $dbname);
-if($conn->connect_error){
+
+$Rural_ID = $_SESSION['Rural_ID'];
+
+$conn = new mysqli("localhost", "root", "", "sahyog1");
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT Job_ID, Job_Title, Job_Description, 
-location, Job_Date, Eligibility, 
-Salary, Job_Type, Contact FROM jobs WHERE status='active' 
-ORDER BY Posted_Date DESC";
+
+$sql = "SELECT * FROM jobs WHERE status='active' ORDER BY Posted_Date DESC";
 $result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Available Jobs</title>
-</head>
-<body>
-<h2  style="font-size: 3rem;">Available Jobs</h2>
+<title>Available Jobs</title>
 <style>
-       body {
+body {
     margin: 0;
     padding: 30px;
     font-family: Arial, Helvetica, sans-serif;
@@ -130,58 +123,81 @@ p {
     font-size: 28px;
     margin-top: 30px;
 }
- button { 
+ button {
     background-color: #4B0082;
-     color: white; 
-     padding: 14px 25px;
-      border: none;
-       border-radius: 5px;
-        cursor: pointer;
-        font-size: 2rem;
-     }
-        button:hover { 
-            background-color: #6a0dad;
-         }
-    </style>
-<?php
-if($result->num_rows > 0){
-    echo "<table border='1' cellpadding='10'>
-            <tr>
-                <th>Job Title</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th>Eligibility</th>
-                <th>Salary</th>
-                <th>Job Type</th>
-                <th>Contact</th>
-                <th>Action</th>
-            </tr>";
-    while($row = $result->fetch_assoc()){
-        echo "<tr>
-                <td>{$row['Job_Title']}</td>
-                <td>{$row['Job_Description']}</td>
-                <td>{$row['location']}</td>
-                <td>{$row['Job_Date']}</td>
-                <td>{$row['Eligibility']}</td>
-                <td>{$row['Salary']}</td>
-                <td>{$row['Job_Type']}</td>
-                <td>{$row['Contact']}</td>
-                <td>
-                    <form action='apply.php' method='POST'>
-                        <input type='hidden' name='Job_ID' 
-                        value='{$row['Job_ID']}'>
-                        <button type='submit' name='apply'>
-                        Apply</button>
-                    </form>
-                </td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "<p>No jobs available currently.</p>";
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
 }
-$conn->close();
+button:hover {
+    background-color: #6a0dad;
+}
+button.applied,
+button:disabled {
+    background-color: #aaa;
+    color: #444;
+    cursor: not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<h2 style="font-size: 3rem;">Available Jobs</h2>
+
+<table border="1">
+<tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Eligibility</th>
+    <th>Salary</th>
+    <th>Type</th>
+    <th>Contact</th>
+    <th>Action</th>
+</tr>
+
+<?php
+while ($row = $result->fetch_assoc()) {
+
+    $check = $conn->prepare(
+        "SELECT 1 FROM JobApplications WHERE Job_ID = ? AND Rural_ID = ?"
+    );
+    $check->bind_param("ii", $row['Job_ID'], $Rural_ID);
+    $check->execute();
+    $check->store_result();
+    $alreadyApplied = $check->num_rows > 0;
+    $check->close();
+
+    echo "<tr>
+        <td>{$row['Job_Title']}</td>
+        <td>{$row['Job_Description']}</td>
+        <td>{$row['location']}</td>
+        <td>{$row['Job_Date']}</td>
+        <td>{$row['Eligibility']}</td>
+        <td>{$row['Salary']}</td>
+        <td>{$row['Job_Type']}</td>
+        <td>{$row['Contact']}</td>
+        <td>";
+
+    if ($alreadyApplied) {
+        echo "<button class='applied' disabled>Applied</button>";
+    } else {
+        echo "
+        <form method='POST' action='applyjob.php'>
+            <input type='hidden' name='Job_ID' value='{$row['Job_ID']}'>
+            <button type='submit' name='apply'>Apply</button>
+        </form>";
+    }
+
+    echo "</td></tr>";
+}
 ?>
+
+</table>
 </body>
 </html>

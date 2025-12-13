@@ -1,17 +1,12 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sahyog1";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli("localhost", "root", "", "sahyog1");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if(!isset($_SESSION['Rural_ID'])) {
+if (!isset($_SESSION['Rural_ID'])) {
     echo "<p style='color:red;'>You are not logged in!</p>";
     exit;
 }
@@ -23,14 +18,11 @@ $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Schemes</title>
-    <style>
-    
-body {
+<title>Available Schemes</title>
+<style>
+ body {
     margin: 0;
     padding: 30px;
     font-family: Arial, Helvetica, sans-serif;
@@ -129,87 +121,78 @@ p {
     font-size: 28px;
     margin-top: 30px;
 }
- button { 
+ button {
     background-color: #4B0082;
-     color: white; 
-     padding: 14px 25px;
-      border: none;
-       border-radius: 5px;
-        cursor: pointer;
-        font-size: 2rem;
-     }
-        button:hover { 
-            background-color: #6a0dad;
-         }
-         
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+button:hover {
+    background-color: #6a0dad;
+}
 button.applied,
 button:disabled {
     background-color: #aaa;
     color: #444;
     cursor: not-allowed;
 }
-    </style>
+</style>
 </head>
 <body>
-<h2 style="font-size: 3rem;">Available Schemes</h2>
-<table>
-        <tr>
-            <th>Scheme Title</th>
-            <th> Scheme Description</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Eligibility</th>
-            <th>Category</th>
-            <th>Apply</th>
-        </tr>
-        <?php
-if ($result && $result->num_rows > 0) {
 
-    while ($row = $result->fetch_assoc()) {
+<h2>Available Schemes</h2>
 
-        // Check if already applied
-        $check = $conn->prepare(
-            "SELECT 1 FROM scheme_applications 
-             WHERE Scheme_ID = ? AND User_ID = ?"
-        );
-        $check->bind_param("ii", $row['Scheme_ID'], $Rural_ID);
-        $check->execute();
-        $check->store_result();
-        $alreadyApplied = $check->num_rows > 0;
-        $check->close();
+<table border="1" cellpadding="10">
+<tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Eligibility</th>
+    <th>Category</th>
+    <th>Apply</th>
+</tr>
 
-        echo "<tr>
-            <td>{$row['Scheme_Title']}</td>
-            <td>{$row['Scheme_Description']}</td>
-            <td>{$row['location']}</td>
-            <td>{$row['Scheme_Date']}</td>
-            <td>{$row['Eligibility']}</td>
-            <td>{$row['Category']}</td>
-            <td>";
+<?php
+while ($row = $result->fetch_assoc()) {
 
-        if ($alreadyApplied) {
-            echo "<button class='applied' disabled>Applied</button>";
-        } else {
-            echo "
-                <form method='POST' action='apply.php'>
-                    <input type='hidden' name='type' value='scheme'>
-                    <input type='hidden' name='id' value='{$row['Scheme_ID']}'>
-                    <button type='submit' name='apply'>Apply</button>
-                </form>
-            ";
-        }
+    $check = $conn->prepare(
+        "SELECT 1 FROM SchemeApplications 
+         WHERE Scheme_ID = ? AND Rural_ID = ?"
+    );
+    $check->bind_param("ii", $row['Scheme_ID'], $Rural_ID);
+    $check->execute();
+    $check->store_result();
+    $alreadyApplied = $check->num_rows > 0;
+    $check->close();
 
-        echo "</td></tr>";
+    echo "<tr>
+        <td>{$row['Scheme_Title']}</td>
+        <td>{$row['Scheme_Description']}</td>
+        <td>{$row['location']}</td>
+        <td>{$row['Scheme_Date']}</td>
+        <td>{$row['Eligibility']}</td>
+        <td>{$row['Category']}</td>
+        <td>";
+
+    if ($alreadyApplied) {
+        echo "<button class='applied' disabled>Applied</button>";
+    } else {
+        echo "
+            <form method='POST' action='ApplyScheme.php'>
+                <input type='hidden' name='Scheme_ID' value='{$row['Scheme_ID']}'>
+                <button type='submit' name='apply'>Apply</button>
+            </form>
+        ";
     }
 
-} else {
-    echo "<tr><td colspan='7'>No active schemes available.</td></tr>";
+    echo "</td></tr>";
 }
-
-$conn->close();
 ?>
 
 </table>
-
 </body>
 </html>
