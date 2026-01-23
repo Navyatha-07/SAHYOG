@@ -33,20 +33,19 @@
     background-color: #3a0069;
 }
 
+
+
 /*_________________________SIGNUP FORMS____________________________*/
 /*________________________NGO AND RURAL______________________________*/
 .PageWrapper{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 form {
-    width: 10%;
-    transform: scale(2.5);
-    transform-origin: center;
-    display:flex ;
+    width: 100%;
     flex-direction: column;
     background-color: #ffffff;
     padding: 30px;
@@ -58,6 +57,7 @@ form {
 form input,
 form select,
 form textarea{
+    width: 100%;
     padding: 12px;
     margin-top: 5px;
     border: 1px solid #ccc;
