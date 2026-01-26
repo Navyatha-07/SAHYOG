@@ -102,7 +102,7 @@ $rural_id = $_SESSION['Rural_ID'];
     margin-top: 15px;
     margin-left: 50px;
     padding: 36px 80px;
-    background-color: #85caf1;
+    background-color: #F26A2E;
     color: white;
     border: none;
     border-radius: 10px;
