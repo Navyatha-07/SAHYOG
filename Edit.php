@@ -83,64 +83,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="UTF-8">
 <title>Edit <?= ucfirst($type) ?> Details</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    display: flex;
-    justify-content: center;
-    padding: 50px 0;
-}
-form {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 400px;
-}
-h2 {
-    text-align: center;
-    color: #1a3f6f;
-    margin-bottom: 25px;
-}
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-input[type="text"], input[type="date"], textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-button {
-    width: 100%;
-    background-color: #1a3f6f;
-    color: white;
-    padding: 12px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #15508b;
-}
-</style>
+</head>
+<link rel="stylesheet" href="Styling.css">
 </head>
 <body>
-
+<div class="PageWrapper">
 <form method="POST">
-    <h2>Edit <?= ucfirst($type) ?></h2>
+    <h2 class="FormHeadings">Edit <?= ucfirst($type) ?></h2>
     <?php foreach ($fields as $f): ?>
         <label><?= str_replace('_', ' ', $f) ?>:</label>
         <?php if (stripos($f, 'Description') !== false): ?>
@@ -153,6 +102,7 @@ button:hover {
     <?php endforeach; ?>
     <button type="submit">Update <?= ucfirst($type) ?></button>
 </form>
+</div>
 
 </body>
 </html>
