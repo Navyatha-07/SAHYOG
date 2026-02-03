@@ -148,14 +148,14 @@ if ($result->num_rows > 0) {
           </tr>";
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . htmlspecialchars($row['Job_Title']) . "</td>";
-        echo "<td>" . nl2br(htmlspecialchars($row['Job_Description'])) . "</td>";
-        echo "<td>" . nl2br(htmlspecialchars($row['location'])) . "</td>";
-        echo "<td>" . htmlspecialchars($row['Job_Date']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['Eligibility']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['Salary']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['Job_Type']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['Contact']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Job_Title'] ?? '') . "</td>";
+        echo "<td>" . nl2br(htmlspecialchars($row['Job_Description'] ?? '')) . "</td>";
+        echo "<td>" . nl2br(htmlspecialchars($row['location'] ?? '')) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Job_Date'] ?? '') . "</td>";
+        echo "<td>" . htmlspecialchars($row['Eligibility'] ?? '') . "</td>";
+        echo "<td>" . htmlspecialchars($row['Salary'] ?? '') . "</td>";
+        echo "<td>" . htmlspecialchars($row['Job_Type'] ?? '') . "</td>";
+        echo "<td>" . htmlspecialchars($row['Contact'] ?? '') . "</td>";
         echo "<td>
                 <a href='Edit.php?type=jobs&id=" . $row['Job_ID'] . "'>
                 ✏️ Edit</a>;

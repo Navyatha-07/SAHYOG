@@ -31,7 +31,7 @@ $check->store_result();
 
 if ($check->num_rows > 0) {
     // Already applied
-    header("Location: AvailableSchemes.php");
+    header("Location: Available_Schemes.php");
     exit;
 }
 $check->close();

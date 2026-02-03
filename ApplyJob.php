@@ -28,7 +28,7 @@ $check->execute();
 $check->store_result();
 
 if ($check->num_rows > 0) {
-    header("Location: availablejobs.php");
+    header("Location: Availablejobs.php");
     exit;
 }
 $check->close();
@@ -43,6 +43,6 @@ $stmt->close();
 
 $conn->close();
 
-header("Location: availablejobs.php");
+header("Location: Availablejobs.php");
 exit;
 ?>

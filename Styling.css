@@ -1,4 +1,7 @@
 /*__________________________SIGNUP PAGE_____________________________*/
+body{
+    background-color: #f8f7bf;
+}
 .Heading{
     font-size: 100px;
     margin: 100px;
@@ -11,10 +14,11 @@
     margin-top: 200px;
 }
 .signup {
+    
     width: 40vw;
     height: 50vh;
     font-size: 56px;
-    background-color: #F26A2E;
+    background-color: #c4cad0;
     color: black;
     border: none;
     outline: none;
@@ -38,63 +42,81 @@
 
 /*_________________________SIGNUP FORMS____________________________*/
 /*________________________NGO AND RURAL______________________________*/
-.PageWrapper{
-    margin-top: 5%;
-    min-height: 100%;
-    display : flex;
-    background-color: #0808e5;
+/* Page Wrapper */
+.PageWrapper { 
+    margin: 5%;
+    min-height: 50vh;
+    display: flex;
+    background-color: #f8f7bf;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 4rem 2rem; /* Reduced from 10rem so form has space */
     overflow: hidden;
 }
-.FormHeadings{
+
+/* Form Title */
+.FormHeadings {
     font-size: 3.5rem;
     text-transform: uppercase;
+    text-align: center;
 }
+
+/* Form Container */
 form {
-    display:flex ;
+    display: flex;
     background-color: #ffffff;
-    padding: 40px;
+    padding: 6rem;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 800px;
+
+    width: 1000px;     /* Increased width */
+    max-width: 95%;   /* Makes it responsive on small screens */
+
     flex-direction: column;
-    gap: 18px;
+    gap: 22px;
 }
-form label{
+
+/* Labels */
+form label {
     font-size: 2.5rem;
     font-weight: 600;
 }
 
+/* Inputs */
 input[type="text"],
 input[type="password"],
 input[type="number"],
 input[type="location"],
 input[type="email"], 
 input[type="date"],
-.Select, textarea{
-    padding: 20px;
+.Select,
+textarea {
+    width: 100%;              /* Takes full form width */
+    padding: 40px;
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
-    width: 100%;
-    font-family: Poppins;
-    font-size: 2rem;
+
+    font-family: Poppins, sans-serif;
+    font-size: 2.7rem;
     font-weight: bold;
     letter-spacing: 0.1rem;
 }
+
+/* Button */
 button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    background-color: #09f321;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 2rem;
+    margin-top: 20px;
+    padding:3rem 7rem;
+        background:#b7d6ff;
+        border:none;
+        border-radius:3rem;
+        font-size:3rem;
+        font-weight:bold;
+        color:#141414;
+        cursor:pointer;
+    transition: 0.3s ease;
 }
+
 button:hover {
     background-color: #3a0069;
 }

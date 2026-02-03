@@ -88,12 +88,11 @@ $conn->close();
     align-items:center;
     background:#f2f6fc;
     font-family:Arial, sans-serif;
-">
+" >
 
 <?php if ($result): ?>
 
     <div style="
-        transform: scale(2.5);
         transform-origin: center;
         width: 400px;
         background:#ffffff;

@@ -188,7 +188,7 @@ while ($row = $result->fetch_assoc()) {
         echo "<button class='applied' disabled>Applied</button>";
     } else {
         echo "
-        <form method='POST' action='applyjob.php'>
+        <form method='POST' action='ApplyJob.php'>
             <input type='hidden' name='Job_ID' value='{$row['Job_ID']}'>
             <button type='submit' name='apply'>Apply</button>
         </form>";

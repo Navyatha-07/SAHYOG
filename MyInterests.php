@@ -149,7 +149,7 @@ p {
 $scheme_sql = $conn->prepare("
     SELECT s.Scheme_ID, s.Scheme_Title, s.Scheme_Description, s.location, s.Scheme_Date, s.Eligibility, s.Category
     FROM scheme s
-    INNER JOIN applications a ON a.Scheme_ID = s.Scheme_ID
+    INNER JOIN schemeapplications a ON a.Scheme_ID = s.Scheme_ID
     WHERE a.Rural_ID = ?
     ORDER BY s.Posted_Date DESC
 ");
@@ -180,7 +180,7 @@ $scheme_sql->close();
 $job_sql = $conn->prepare("
     SELECT j.Job_ID, j.Job_Title, j.Job_Description, j.location, j.Salary, j.Eligibility, j.Job_Type, j.Contact
     FROM jobs j
-    INNER JOIN applications a ON a.Job_ID = j.Job_ID
+    INNER JOIN jobapplications a ON a.Job_ID = j.Job_ID
     WHERE a.Rural_ID = ?
     ORDER BY j.Posted_Date DESC
 ");
@@ -261,6 +261,6 @@ $training_sql->close();
 $conn->close();
 ?>
 
-<br><a href="15_Rural_dashboard.php">Back to Dashboard</a>
+<br><a href="15_Rural_dashboard.php"><h1> Back to Dashboard</h1></a>
 </body>
 </html>
