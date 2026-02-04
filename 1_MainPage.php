@@ -22,57 +22,7 @@
   min-height:100vh;
 ">
 
-<!-- HEADER -->
-<header style="
-  background:#f8f8c6;
-  padding:1rem 1rem;
-  display:flex;
-  flex-wrap:wrap;
-  gap:2rem;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
-  min-height: 10vh;
-">
-
-  <div style="color:#d24e01;">
-    <h1 style="
-      margin:0;
-      margin-left: 30px;
-      font-size:5.5rem;
-      letter-spacing:0.3em;
-    ">
-      SAHYOG
-    </h1>
-
-    <p style="
-      margin-top:0.5rem;
-       margin-left: 30px;
-      font-size:2rem;
-      letter-spacing: 0.1rem;
-    ">
-       Connecting Villages With Hope
-    </p>
-  </div>
-
-  <nav style="min-height: min-content;">
-    <ul style="
-      list-style:none;
-      margin-right:6rem;
-      padding:0;
-      display:flex;
-      flex-wrap:wrap;
-      gap:4rem;
-    ">
-      <li><a href="1_MainPage.html" style="text-decoration:none;font-weight:bolder;font-size:3rem;color:#e27602;">HOME</a></li>
-      <li><a href="2_Services.html" style="text-decoration:none;font-weight:bolder;font-size:3rem;color:#e27602;">SERVICES</a></li>
-      <li><a href="3_AboutUs.html" style="text-decoration:none;font-weight:bolder;font-size:3rem;color:#e27602;">ABOUT US</a></li>
-      <li><a href="4_contact.html" style="text-decoration:none;font-weight:bolder;font-size:3rem;color:#e27602;">CONTACT US</a></li>
-    </ul>
-  </nav>
-
-</header>
-
+<?php include 'nav.php'; ?>
 <!-- MAIN -->
 <main style="
   flex:1;
@@ -103,7 +53,7 @@
     justify-content:center;
     flex-wrap:wrap;
   ">
-    <a href="5_Signup.html">
+    <a href="5_Signup.php">
       <button style="
         padding:4rem 7rem;
         background:#e05a00;
@@ -119,7 +69,7 @@
       </button>
     </a>
 
-    <a href="Login.html">
+    <a href="6_Login.php">
       <button style="
         margin-left: 10px;
         padding:4rem 8rem;

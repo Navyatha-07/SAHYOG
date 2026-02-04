@@ -29,7 +29,7 @@ $rural_id = $_SESSION['Rural_ID'];
 </head>
 
 <body>
-
+<?php include 'nav.php'; ?>
 <p class="welcome">Welcome <?php echo htmlspecialchars($name); ?>,</p>
 <h1 class="heading">Quick Summary</h1>
 

@@ -105,7 +105,7 @@ $conn->close();
             Signup Successful!
         </h1>
 
-        <a href="Login.html" style="text-decoration:none;">
+        <a href="6_Login.php" style="text-decoration:none;">
             <button type="button" style="
                 padding:12px 30px;
                 border:none;

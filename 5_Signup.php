@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP </title>
+     <link rel="stylesheet" href="Styling.css">
+</head>
+<body >
+<?php include 'nav.php'; ?>
+    <h1 class="Heading"> Tell Us More About You</h1>
+ <div class="signup-container">
+    <a href="6_NGO_signup.html" class="signup"> ARE YOU NGO ?</button>
+   </a>
+    <a href="8_Rural_Signup.html" class="signup"> ARE YOU RURAL ?</button></a>
+ </div>
+</body>
+</html>

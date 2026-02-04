@@ -31,6 +31,7 @@ $ngo_id = $_SESSION['NGO_ID'];    // NGO unique ID
 </head>
 
 <body style="overflow: hidden;">
+<?php include 'nav.php'; ?>
     
     <p class="welcome">Welcome <?php echo htmlspecialchars($name); ?>,</p>
     <h1 class="heading">Quick Summary</h1>

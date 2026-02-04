@@ -1,6 +1,7 @@
 /*__________________________SIGNUP PAGE_____________________________*/
 body{
-    background-color: #f8f7bf;
+    background-color: #f0fff0;
+    
 }
 .Heading{
     font-size: 100px;
@@ -18,8 +19,8 @@ body{
     width: 40vw;
     height: 50vh;
     font-size: 56px;
-    background-color: #c4cad0;
-    color: black;
+    background-color: #e05a00;
+    color: #FFFFff;
     border: none;
     outline: none;
     text-decoration: none;
@@ -34,7 +35,7 @@ body{
     font-weight: bolder;
 }
 .signup:hover {
-    background-color: #ece5f2;
+    background-color: #c4cad0;
 }
 
 
@@ -47,7 +48,7 @@ body{
     margin: 5%;
     min-height: 50vh;
     display: flex;
-    background-color: #f8f7bf;
+    background-color: #f0fff0;
     justify-content: center;
     align-items: center;
     padding: 4rem 2rem; /* Reduced from 10rem so form has space */
@@ -107,18 +108,18 @@ textarea {
 button {
     margin-top: 20px;
     padding:3rem 7rem;
-        background:#b7d6ff;
+        background:#e05a00;
         border:none;
         border-radius:3rem;
         font-size:3rem;
         font-weight:bold;
-        color:#141414;
+        color:#ffffff;
         cursor:pointer;
     transition: 0.3s ease;
 }
 
 button:hover {
-    background-color: #3a0069;
+    background-color: #c4cad0;
 }
 
 /*______________________________DASHBOARDS_________________________________*/
@@ -179,7 +180,7 @@ button:hover {
 }
 
 .DropButton:hover {
-    background-color: #3a0069;
+    background-color: #c4cad0;
 }
 
 .DropdownContent {
