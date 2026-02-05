@@ -125,7 +125,7 @@ p {
     margin-top: 30px;
 }
  button { 
-    background-color: #4B0082;
+    background-color: #e05a00;
      color: white; 
      padding: 14px 25px;
       border: none;
@@ -134,7 +134,7 @@ p {
         font-size: 2rem;
      }
         button:hover { 
-            background-color: #6a0dad;
+            background-color: #fd9854;
          }
     </style>
 </head>

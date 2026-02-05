@@ -61,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $values[] = $id;
     $values[] = $NGO_ID;
 
-    $query = "UPDATE $table SET " . implode(', ', $set_clause) . " WHERE $id_column = ? AND NGO_ID = ?";
+    $query = "UPDATE $table SET " . implode(', ', $set_clause) . 
+    " WHERE $id_column = ? AND NGO_ID = ?";
     $stmt = $conn->prepare($query);
 
     // dynamic binding
@@ -70,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         echo "<script>alert('Details updated successfully'); 
-        window.location.href='14_NGO_dashboard.html';</script>";
+        window.location.href='14_NGO_dashboard.php';</script>";
         exit;
     } else {
         echo "<script>alert('Error updating details');</script>";

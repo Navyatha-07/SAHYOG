@@ -30,7 +30,7 @@ $ngo_id = $_SESSION['NGO_ID'];    // NGO unique ID
     <link rel="stylesheet" href="Styling.css"/>
 </head>
 
-<body style="overflow: hidden;">
+<body >
 <?php include 'nav.php'; ?>
     
     <p class="welcome">Welcome <?php echo htmlspecialchars($name); ?>,</p>

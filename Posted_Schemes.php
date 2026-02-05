@@ -65,7 +65,7 @@ table {
 
 /* Table header */
 th {
-    background: #4B0082;
+    background: #e05a00;
     color: #ffffff;
     padding: 18px;
     font-size: 28px;
