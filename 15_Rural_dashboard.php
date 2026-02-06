@@ -28,7 +28,7 @@ $rural_id = $_SESSION['Rural_ID'];
     <link rel="stylesheet" href="Styling.css"/>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 <?php include 'nav.php'; ?>
 <p class="welcome">Welcome <?php echo htmlspecialchars($name); ?>,</p>
 <h1 class="heading">Quick Summary</h1>
@@ -80,16 +80,8 @@ $rural_id = $_SESSION['Rural_ID'];
     <!-- My Interests -->
     <div class="card4">
         <a href="MyInterests.php">
-            <h2>My Interests</h2>
-            <p>
-                <?php
-                $q = "SELECT COUNT(*) AS total 
-                      FROM interestedrurals 
-                      WHERE Rural_ID='$rural_id'";
-                $r = mysqli_query($conn, $q);
-                echo mysqli_fetch_assoc($r)['total'];
-                ?>
-            </p>
+            <h2 style="text-align: center;">My Interests</h2>
+           
         </a>
     </div>
 
